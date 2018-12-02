@@ -25,7 +25,7 @@ public class PullBehaviour : PlayerBehaviour
         elapsed += Time.deltaTime;
 
         if (elapsed > 10)
-            LevelDone();
+            LevelDone(0, 0);
     }
 
     void OnMouseDown()

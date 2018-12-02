@@ -153,6 +153,7 @@ PlayerSettings:
   applicationIdentifier:
     Android: com.test.test
     Standalone: com.Company.ProductName
+    iOS: com.CrazyPary.CrazyPartyTest
   buildNumber: {}
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 16

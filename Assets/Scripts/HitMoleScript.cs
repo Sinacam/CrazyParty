@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class HitMoleScript : PlayerBehaviour {
+public class HitMoleScript : PlayerBehaviour
+{
 
     public GameObject Mole;
     public NetworkIdentity[] networkIdentity;
@@ -17,26 +18,32 @@ public class HitMoleScript : PlayerBehaviour {
     public static int numOfHole;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         int i;
         numOfHole = holePosition.Length;
 
         for (i = 0; i < numOfHole; i++)
         {
-            holePosition[i] = GameObject.Find("Hole" + (i+1)).transform.position;
+            holePosition[i] = GameObject.Find("Hole" + (i + 1)).transform.position;
             holeOccupied[i] = false;
         }
-	}
-   
+    }
+
+    void FixedUpdate()
+    {
+        if (!isServer)
+            return;
+
+        if (Random.Range(0, 100) <= 10)
+            CmdSpawnMole();
+    }
+
     // Update is called once per frame
     void Update()
     {
         if (!isServer)
             return;
-
-        if (Random.Range(0, 100) <= 2){
-            CmdSpawnMole();
-        }
 
         int i;
         RaycastHit2D hit;
@@ -51,25 +58,18 @@ public class HitMoleScript : PlayerBehaviour {
                 holeOccupied[i] = false;
             }
         }
-
     }
-
 
     [Command]
     void CmdSpawnMole()
     {
-        int i;
-        int p = Random.Range(0, numOfHole);
+        int i = Random.Range(0, numOfHole);
 
-        for (i = 0; i < numOfHole; i++)
+        if (holeOccupied[i] == false)
         {
-            if (holeOccupied[i] == false && p % numOfHole == i)
-            {
-                moleList[i] = Instantiate(Mole, holePosition[i], Quaternion.identity);
-                NetworkServer.Spawn(moleList[i]);
-                holeOccupied[i] = true;
-            }
+            moleList[i] = Instantiate(Mole, holePosition[i], Quaternion.identity);
+            NetworkServer.Spawn(moleList[i]);
+            holeOccupied[i] = true;
         }
     }
-
 }

@@ -84,8 +84,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e7aebd451946416db2793a268742f12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Mole: {fileID: 0}
+  role: 0
+  playerId: 0
+  numOfPlayer: 4
   holePosition:
   - {x: 0, y: 0}
   - {x: 0, y: 0}
-  holeOccupied: 0000
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  holeOccupied: 000000000000000000

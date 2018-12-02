@@ -16,10 +16,12 @@ public class PlayerBehaviour : NetworkBehaviour
 
     }
 
-    public void LevelDone()
+    public void LevelDone(int good, int evil)
     {
         if (!levelDone)
         {
+            goodScore += good;
+            evilScore += evil;
             levelDone = true;
             CmdLevelDone();
         }

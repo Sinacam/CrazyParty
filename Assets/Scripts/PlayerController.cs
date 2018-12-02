@@ -16,7 +16,7 @@ public class PlayerController : PlayerBehaviour
         transform.Translate(x, y, 0);
 
         if (Input.GetKeyDown(KeyCode.Space))
-            LevelDone();
+            LevelDone(0, 0);
 
         goodScore += 42;
         evilScore -= 42;
