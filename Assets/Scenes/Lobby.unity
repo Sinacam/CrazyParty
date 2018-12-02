@@ -169,7 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   manager: {fileID: 0}
   showGUI: 1
-  offsetX: 0
+  offsetX: 70
   offsetY: 0
 --- !u!114 &621226983
 MonoBehaviour:
@@ -266,11 +266,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelScenes:
   - name: TugOfWar
-    active: 0
+    active: 1
   - name: ShakeCola
     active: 1
   - name: HitMole
-    active: 0
+    active: 1
+  - name: FinalResult
+    active: 1
 --- !u!1 &744716550
 GameObject:
   m_ObjectHideFlags: 0

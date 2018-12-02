@@ -5,17 +5,10 @@ using UnityEngine;
 public class Endline : MonoBehaviour
 {
     // Use this for initialization
-    void Start()
-    {
-    }
-
-
+    void Start(){}
     // Update is called once per frame
-    void Update()
-    {
-
-    }
-
+    void Update(){}
+	
     //可樂搖滿房間
     void OnTriggerEnter2D(Collider2D collision)
     {

@@ -5,11 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class FinalResult : MonoBehaviour {
 	
-	void Update () {
-		if (Input.GetKeyDown(KeyCode.Space))
-            SceneManager.LoadScene("Lobby");
-		if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
-			SceneManager.LoadScene("Lobby");
+	void Start () {
+		
+		
 	}
 	
+	void Update () {
+		if (Input.GetKeyDown(KeyCode.Space)){
+			SceneManager.LoadScene("Lobby");
+		}
+		if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) {
+			SceneManager.LoadScene("Lobby");
+		}
+	}
 }
