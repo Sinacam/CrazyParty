@@ -22,7 +22,7 @@ public class ShakeCola : PlayerBehaviour
             return;
         }
 
-        if (Input.GetMouseButton(0)) //滑鼠左鍵
+        if (Input.GetMouseButton(0) || Input.GetKeyDown(KeyCode.Space)) //滑鼠左鍵
         {
             CmdShakeCola();
         }
@@ -43,6 +43,6 @@ public class ShakeCola : PlayerBehaviour
     [Command] //執行shake cola動作（要從client傳到server)
     void CmdShakeCola()
     {
-        colaColor.transform.Translate(yposition + new Vector2(0, 20));
+        colaColor.transform.Translate(yposition + new Vector2(0, 10));
     }
 }
