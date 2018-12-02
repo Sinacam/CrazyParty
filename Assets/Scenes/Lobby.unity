@@ -266,10 +266,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelScenes:
   - name: TugOfWar
-    active: 1
+    active: 0
   - name: ShakeCola
-    active: 1
+    active: 0
   - name: HitMole
+    active: 0
+  - name: LevelTemplate
     active: 1
   - name: FinalResult
     active: 1
@@ -494,7 +496,7 @@ MonoBehaviour:
     i13: 0
     i14: 0
     i15: 0
-  m_ServerOnly: 1
+  m_ServerOnly: 0
   m_LocalPlayerAuthority: 0
 --- !u!4 &1236727296
 Transform:
