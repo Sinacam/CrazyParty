@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/HitMole.unity
     guid: 3ff2950ecb0c74b0d950e103b60a9a87
+  - enabled: 1
+    path: Assets/Scenes/Balance.unity
+    guid: e846337cc3cbd4f47acedc2d72d1ab9d
   m_configObjects: {}
