@@ -5,6 +5,7 @@ using UnityEngine.Networking;
 
 public class PlayerBehaviour : NetworkBehaviour
 {
+    [HideInInspector]
     [SyncVar]
     public int role, playerId;
 
@@ -16,6 +17,15 @@ public class PlayerBehaviour : NetworkBehaviour
 
     }
 
+    public void LevelDone()
+    {
+        if(!levelDone)
+        {
+            levelDone = true;
+            CmdLevelDone();
+        }
+    }
+    
     public void LevelDone(int good, int evil)
     {
         if(!levelDone)
