@@ -7,6 +7,7 @@ public class BallController : PlayerBehaviour
     public float sensitivity = 10f;
     public float windStrength = 10f;
     Rigidbody rb;
+    float elapsed;
 
     void Start()
     {
@@ -32,9 +33,16 @@ public class BallController : PlayerBehaviour
 
         rb.AddForce(new Vector3(x * Time.deltaTime, y * Time.deltaTime, 0));
 
+        elapsed += Time.deltaTime;
+
         if(transform.position.sqrMagnitude > 16)
         {
             LevelDone(0, 0);
+        }
+
+        if(elapsed > 10)
+        {
+            LevelDone(1, 0);
         }
     }
 }

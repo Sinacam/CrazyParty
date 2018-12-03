@@ -7,6 +7,7 @@ public class WindController : PlayerBehaviour
 {
     public float sensitivity = 10, cutoff = 2;
     GameObject ball;
+    float elapsed;
 
     public float GetAzimuth()
     {
@@ -60,9 +61,16 @@ public class WindController : PlayerBehaviour
 
         AddAzimuth(da);
 
+        elapsed += Time.deltaTime;
+
         if (ball.transform.position.sqrMagnitude > 16)
         {
             LevelDone(1, 0);
+        }
+
+        if(elapsed > 10)
+        {
+            LevelDone(0, 0);
         }
     }
 }
