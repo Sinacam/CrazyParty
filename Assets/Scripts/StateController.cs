@@ -9,16 +9,13 @@ public class StateController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-        ShowInstruct();
-		
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-
         
-		
+
 	}
 
     void whoWins()
@@ -36,8 +33,4 @@ public class StateController : MonoBehaviour {
 
     }
 
-    void ShowInstruct()
-    {//
-
-    }
 }
