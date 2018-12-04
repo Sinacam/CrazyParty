@@ -14,7 +14,7 @@ public class Lobby : NetworkBehaviour
     }
 
     void Update()
-    {
+    {/*
         if (!isServer)
             return;
 
@@ -29,6 +29,23 @@ public class Lobby : NetworkBehaviour
             }
 
             Persist.net.ServerChangeScene("LoadingNext");
+        }*/
+    }
+
+    public void gotoLoadNext()
+    {
+        if (!isServer)
+            return;
+
+        Persist.goodScores.Clear();
+        Persist.evilScores.Clear();
+        for (int i = 0; i < 4; i++)
+        {
+            Persist.goodScores.Add(0);
+            Persist.evilScores.Add(0);
         }
+
+        Persist.net.ServerChangeScene("LoadingNext");
+        
     }
 }
