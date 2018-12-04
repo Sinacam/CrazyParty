@@ -20,6 +20,7 @@ public class SceneList : MonoBehaviour
     void Start()
     {
         levelScenes = levelScenes.Where(x => x.active).ToList();
+
         for (int i = 0; i < levelScenes.Count; i++)
             sceneId[levelScenes[i].name] = i;
     }

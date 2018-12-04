@@ -22,7 +22,7 @@ public class ShakeCola : PlayerBehaviour
             return;
         }
 
-        if (Input.GetMouseButton(0) || Input.GetKeyDown(KeyCode.Space)) //滑鼠左鍵
+        if (Input.GetMouseButton(0)) //滑鼠左鍵
         {
             CmdShakeCola();
         }
@@ -30,7 +30,7 @@ public class ShakeCola : PlayerBehaviour
         if (playerFinish)
         { //如果玩家已經結束遊戲
             Debug.Log("leveldone");
-            LevelDone(0, 0);
+            LevelDone();
         }
     }
 
