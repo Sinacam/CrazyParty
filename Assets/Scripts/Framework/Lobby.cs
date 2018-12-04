@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.Networking.Match;
 using UnityEngine.SceneManagement;
 
 public class Lobby : NetworkBehaviour
@@ -31,8 +32,7 @@ public class Lobby : NetworkBehaviour
             Persist.net.ServerChangeScene("LoadingNext");
         }*/
     }
-
-    public void gotoLoadNext()
+    public void GotoLoadNext()
     {
         if (!isServer)
             return;
