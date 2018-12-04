@@ -12,12 +12,20 @@ public class Lobby : NetworkBehaviour
     }
     
     void Update()
-    {
+    {/*
         if (Input.GetKeyDown(KeyCode.Space) && Persist.net.IsClientConnected())
         {
             Persist.goodScores = new SyncListInt();
             Persist.evilScores = new SyncListInt();
             Persist.net.ServerChangeScene("LoadingNext");
-        }
+        }*/
+    }
+
+    public void go()
+    {
+        Persist.goodScores = new SyncListInt();
+        Persist.evilScores = new SyncListInt();
+        Persist.net.ServerChangeScene("LoadingNext");
+
     }
 }
