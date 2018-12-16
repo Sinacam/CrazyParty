@@ -8,7 +8,7 @@ PlayerSettings:
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
-  defaultScreenOrientation: 0
+  defaultScreenOrientation: 4
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
@@ -727,9 +727,9 @@ PlayerSettings:
     UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: 375b994c-2985-4ee9-9cf4-f9fb5e72671f
-  projectName: CrazyParty (2)
-  organizationId: azlartsou
+  cloudProjectId: a9a2044e-be7f-4fa0-b217-6f7d963a31d6
+  projectName: CrazyParty
+  organizationId: kihosi
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
