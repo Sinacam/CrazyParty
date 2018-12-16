@@ -866,6 +866,7 @@ MonoBehaviour:
   matchSize: 4
   isNetworkActive: 0
   matchMaker: {fileID: 0}
+  maxLevels: 5
 --- !u!114 &621226984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -885,7 +886,7 @@ MonoBehaviour:
   - name: HitMole
     active: 1
   - name: Balance
-    active: 0
+    active: 1
   - name: LevelTemplate
     active: 0
 --- !u!1 &646222594
