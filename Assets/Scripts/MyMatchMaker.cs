@@ -79,9 +79,10 @@ public class MyMatchMaker : MonoBehaviour {
             Debug.LogError("Join match failed");
         }
     }
-
+    /*
     public void OnDestroy()
     {
         NetworkManager.singleton.StopHost();
     }
+    */
 }
