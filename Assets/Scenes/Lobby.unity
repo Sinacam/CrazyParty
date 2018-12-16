@@ -441,7 +441,7 @@ MonoBehaviour:
   - name: HitMole
     active: 1
   - name: Balance
-    active: 1
+    active: 0
   - name: LevelTemplate
     active: 0
 --- !u!1 &646222594
