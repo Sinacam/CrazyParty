@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.Networking.Match;
 using UnityEngine.SceneManagement;
 
 public class Lobby : NetworkBehaviour
@@ -14,7 +15,7 @@ public class Lobby : NetworkBehaviour
     }
 
     void Update()
-    {
+    {/*
         if (!isServer)
             return;
 
@@ -29,6 +30,22 @@ public class Lobby : NetworkBehaviour
             }
 
             Persist.net.ServerChangeScene("LoadingNext");
+        }*/
+    }
+    public void GotoLoadNext()
+    {
+        if (!isServer)
+            return;
+
+        Persist.goodScores.Clear();
+        Persist.evilScores.Clear();
+        for (int i = 0; i < 4; i++)
+        {
+            Persist.goodScores.Add(0);
+            Persist.evilScores.Add(0);
         }
+
+        Persist.net.ServerChangeScene("LoadingNext");
+        
     }
 }
