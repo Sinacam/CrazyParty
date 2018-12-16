@@ -268,7 +268,7 @@ SpriteRenderer:
   m_Size: {x: 5.12, y: 5.12}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &70430240
@@ -535,7 +535,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 0}
-  showGUI: 1
+  showGUI: 0
   offsetX: 0
   offsetY: 0
 --- !u!114 &621226983
@@ -1036,6 +1036,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa45e7729d5044920be40e8045069bbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  manager: {fileID: 621226983}
+  btnTexture: {fileID: 2800000, guid: 0508ad11af7d94aceb31eeb82b5ea683, type: 3}
+  showGUI: 1
 --- !u!4 &771431775
 Transform:
   m_ObjectHideFlags: 0
