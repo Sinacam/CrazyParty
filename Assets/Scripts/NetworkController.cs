@@ -7,8 +7,10 @@ using UnityEngine.SceneManagement;
 public class NetworkController : NetworkManager
 {
     string sceneName;
-    int[] roles = new int[4];
-
+	public int maxLevels = 1;
+	int levelCount = 0;
+	
+	int[] roles = new int[4];
     object countLock = new object();
     int roleCount = 0;
     public int clientCount
@@ -119,8 +121,17 @@ public class NetworkController : NetworkManager
         lock(countLock)
         {
             levelDoneCount++;
-            if (levelDoneCount >= clientCount)
-                ServerChangeScene("LoadingNext");
+            if (levelDoneCount >= clientCount) {
+				//change to next level
+				levelCount ++;
+				if(levelCount>=maxLevels) {
+					//finished playing
+					ServerChangeScene("FinalResult");
+				}
+				else 
+					ServerChangeScene("LoadingNext");
+			}
+                
         }
     }
 }
