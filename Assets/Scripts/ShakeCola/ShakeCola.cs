@@ -37,11 +37,10 @@ public class ShakeCola : PlayerBehaviour
             return;
         }
 
-        if (Input.GetMouseButton(0)) //滑鼠左鍵(手機點擊）
-        {
-            CmdShakeCola();
-            GetComponent<AudioSource>().Play(); //播放音效
-        }
+        //if (Input.GetMouseButton(0)) //滑鼠左鍵(手機點擊）
+        //{
+        //    CmdShakeCola();
+        //}
 
         if (playerFinish)
         { //如果玩家已經結束遊戲
@@ -72,11 +71,16 @@ public class ShakeCola : PlayerBehaviour
     }
 
     [Command] //執行shake cola動作（要從client傳到server)
-    void CmdShakeCola()
+    public void CmdShakeCola()
     {
+        //if (colaColor.transform.position.y < 210) //到頂就不能繼續填滿了
+        //{
+        //print("position:" + colaColor.transform.position.y);
+        GetComponent<AudioSource>().Play(); //播放音效
         countShake += 1;
         print("countShake:" + countShake);
         groupScore[group] += countShake;
         colaColor.transform.Translate(yposition + new Vector2(0, 20));
+        //}
     }
 }
