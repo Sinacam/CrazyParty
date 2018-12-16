@@ -40,6 +40,7 @@ public class ShakeCola : PlayerBehaviour
         if (Input.GetMouseButton(0)) //滑鼠左鍵(手機點擊）
         {
             CmdShakeCola();
+            GetComponent<AudioSource>().Play(); //播放音效
         }
 
         if (playerFinish)
@@ -58,6 +59,9 @@ public class ShakeCola : PlayerBehaviour
             {
                 LevelDone(0, 0);
             }
+
+            //遊戲結束，調整手機顯示方式
+            GameObject.Find("Main Camera").GetComponent<Orientation>().reorientate();
         }
     }
 
