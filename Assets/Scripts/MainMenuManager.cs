@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class MainMenuManager : MonoBehaviour {
-    public float soundVolume = 0.5f;
+    public static float soundVolume = 0.5f;
     [SerializeField] GameObject sliderBar;
     [SerializeField] Slider slider;
     [SerializeField] AudioSource bgm;

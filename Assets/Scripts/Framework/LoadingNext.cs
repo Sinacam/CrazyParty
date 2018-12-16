@@ -7,7 +7,7 @@ public class LoadingNext : NetworkBehaviour
 {
     void Start()
     {
-        StartCoroutine(NextLevelIn(1));
+        StartCoroutine(NextLevelIn(5));
     }
 
     IEnumerator NextLevelIn(float t)
