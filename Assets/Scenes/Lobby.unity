@@ -866,6 +866,7 @@ MonoBehaviour:
   matchSize: 4
   isNetworkActive: 0
   matchMaker: {fileID: 0}
+  maxLevels: 1
 --- !u!114 &621226984
 MonoBehaviour:
   m_ObjectHideFlags: 0
