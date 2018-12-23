@@ -9,36 +9,36 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1171871182135048}
+  m_RootGameObject: {fileID: 1116253152732390}
   m_IsPrefabAsset: 1
---- !u!1 &1171871182135048
+--- !u!1 &1116253152732390
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 224114814927294434}
-  - component: {fileID: 222187348097266756}
-  - component: {fileID: 114208265263300948}
-  - component: {fileID: 61384052110332132}
-  - component: {fileID: 114236876047560398}
-  - component: {fileID: 114459360054068714}
-  - component: {fileID: 114924124232670588}
-  - component: {fileID: 82329195496985748}
+  - component: {fileID: 224325541664476990}
+  - component: {fileID: 222827047423031908}
+  - component: {fileID: 114069546326582902}
+  - component: {fileID: 61239086601804764}
+  - component: {fileID: 114586136356372208}
+  - component: {fileID: 114901223791364970}
+  - component: {fileID: 114553638694371834}
+  - component: {fileID: 82126648387548042}
   m_Layer: 5
-  m_Name: Click
+  m_Name: ShakeColaClick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!61 &61384052110332132
+--- !u!61 &61239086601804764
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1171871182135048}
+  m_GameObject: {fileID: 1116253152732390}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -58,12 +58,12 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 320.10388, y: 477.664}
   m_EdgeRadius: 0
---- !u!82 &82329195496985748
+--- !u!82 &82126648387548042
 AudioSource:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1171871182135048}
+  m_GameObject: {fileID: 1116253152732390}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
@@ -153,12 +153,12 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &114208265263300948
+--- !u!114 &114069546326582902
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1171871182135048}
+  m_GameObject: {fileID: 1116253152732390}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
@@ -180,58 +180,12 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114236876047560398
+--- !u!114 &114553638694371834
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1171871182135048}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03a2066bad2dd4d55bef87f5ab51faa0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  role: 0
-  playerId: 0
-  playerFinish: 0
---- !u!114 &114459360054068714
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1171871182135048}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 134
-    i1: 170
-    i2: 69
-    i3: 82
-    i4: 218
-    i5: 170
-    i6: 244
-    i7: 190
-    i8: 89
-    i9: 122
-    i10: 240
-    i11: 29
-    i12: 232
-    i13: 96
-    i14: 143
-    i15: 143
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
---- !u!114 &114924124232670588
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1171871182135048}
+  m_GameObject: {fileID: 1116253152732390}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
@@ -247,19 +201,65 @@ MonoBehaviour:
   m_SnapThreshold: 5
   m_InterpolateRotation: 1
   m_InterpolateMovement: 1
---- !u!222 &222187348097266756
+--- !u!114 &114586136356372208
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1116253152732390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03a2066bad2dd4d55bef87f5ab51faa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  role: 0
+  playerId: 0
+  playerFinish: 0
+--- !u!114 &114901223791364970
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1116253152732390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 226
+    i1: 8
+    i2: 56
+    i3: 189
+    i4: 161
+    i5: 233
+    i6: 4
+    i7: 244
+    i8: 137
+    i9: 30
+    i10: 0
+    i11: 37
+    i12: 25
+    i13: 249
+    i14: 71
+    i15: 111
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 1
+--- !u!222 &222827047423031908
 CanvasRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1171871182135048}
+  m_GameObject: {fileID: 1116253152732390}
   m_CullTransparentMesh: 0
---- !u!224 &224114814927294434
+--- !u!224 &224325541664476990
 RectTransform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1171871182135048}
+  m_GameObject: {fileID: 1116253152732390}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.020954585, y: 0.021036781, z: 1}

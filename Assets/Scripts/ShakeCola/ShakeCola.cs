@@ -6,7 +6,6 @@ using UnityEngine.Networking;
 public class ShakeCola : PlayerBehaviour
 {
     private GameObject colaColor; //不同Group有不同cola
-    //private GameObject colaColor2;
     private Vector2 yposition = new Vector2(0, 0);
     private int group = 0; //group no.
     private int countShake = 0; //計算每個玩家shake幾次

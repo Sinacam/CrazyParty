@@ -866,7 +866,7 @@ MonoBehaviour:
   matchSize: 4
   isNetworkActive: 0
   matchMaker: {fileID: 0}
-  maxLevels: 1
+  maxLevels: 5
 --- !u!114 &621226984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -880,12 +880,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelScenes:
   - name: TugOfWar
-    active: 1
+    active: 0
   - name: ShakeCola
-    active: 1
+    active: 0
   - name: HitMole
-    active: 1
+    active: 0
   - name: Balance
+    active: 0
+  - name: ZeroStop
     active: 1
   - name: LevelTemplate
     active: 0

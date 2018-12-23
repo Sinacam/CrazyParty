@@ -1022,10 +1022,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPrefabs:
-  - {fileID: 1171871182135048, guid: 86aa4552daaaf4be597af01de8608f8f, type: 2}
-  - {fileID: 1171871182135048, guid: 86aa4552daaaf4be597af01de8608f8f, type: 2}
-  - {fileID: 1171871182135048, guid: 86aa4552daaaf4be597af01de8608f8f, type: 2}
-  - {fileID: 1171871182135048, guid: 86aa4552daaaf4be597af01de8608f8f, type: 2}
+  - {fileID: 1116253152732390, guid: e20838bda1e904f4891e002519f9476f, type: 2}
+  - {fileID: 1116253152732390, guid: e20838bda1e904f4891e002519f9476f, type: 2}
+  - {fileID: 1116253152732390, guid: e20838bda1e904f4891e002519f9476f, type: 2}
+  - {fileID: 1116253152732390, guid: e20838bda1e904f4891e002519f9476f, type: 2}
   spawnablePrefabs: []
 --- !u!114 &1289287671
 MonoBehaviour:
