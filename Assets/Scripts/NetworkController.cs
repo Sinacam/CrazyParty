@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class NetworkController : NetworkManager
 {
     string sceneName;
-	public int maxLevels = 1;
+	public int maxLevels = 5;
 	int levelCount = 0;
 	
 	int[] roles = new int[4];

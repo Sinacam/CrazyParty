@@ -34,7 +34,7 @@ public class DeviceRotate : MonoBehaviour { //偵測手機陀螺儀
                 shakeCola.CmdShakeCola();
             //print("success!");
 
-
+        
         }
 
     }
