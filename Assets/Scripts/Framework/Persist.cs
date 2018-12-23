@@ -15,22 +15,26 @@ public class Persist : NetworkBehaviour
     }
 
     Lobby _lobby;
+    public void BindLobby(Lobby l)
+    {
+        _lobby = l;
+    }
 
     NetworkController _net;
     SceneList _sl;
 
-    static Persist instance;
+    static public Persist instance;
 
     static public SyncListInt goodScores
     {
-        get { return instance._goodScores; }
-        set { instance._goodScores = value; }
+        get { return instance._lobby.goodScores; }
+        set { instance._lobby.goodScores = value; }
     }
 
     static public SyncListInt evilScores
     {
-        get { return instance._evilScores; }
-        set { instance._evilScores = value; }
+        get { return instance._lobby.evilScores; }
+        set { instance._lobby.evilScores = value; }
     }
 
     static public NetworkController net

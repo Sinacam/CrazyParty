@@ -12,6 +12,7 @@ public class Lobby : NetworkBehaviour
     void Start()
     {
         DontDestroyOnLoad(this);
+        Persist.instance.BindLobby(this);
     }
 
     public void GotoLoadNext()
@@ -27,6 +28,6 @@ public class Lobby : NetworkBehaviour
             evilScores.Add(0);
         }
 
-        net.ServerChangeScene("LoadingNext");
+        Persist.net.ServerChangeScene("LoadingNext");
     }
 }
