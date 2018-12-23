@@ -9,7 +9,7 @@ public class DeviceRotate : MonoBehaviour { //偵測手機陀螺儀
     //可讓手機震動！
     void Update()
     {
-        CheckVibrate();
+        //CheckVibrate();
     }
 
     private void CheckVibrate()
@@ -23,7 +23,7 @@ public class DeviceRotate : MonoBehaviour { //偵測手機陀螺儀
             m_detalAcceleration.z > m_checkValue)
         {
             /// 手机震动
-            Handheld.Vibrate();
+            //Handheld.Vibrate();
 
             // 填滿可樂
             // Step one

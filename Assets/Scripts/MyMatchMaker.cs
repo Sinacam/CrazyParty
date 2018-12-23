@@ -28,6 +28,52 @@ public class MyMatchMaker : MonoBehaviour
     GUIStyle backMatchStyle = new GUIStyle();
     GUIContent backMatchContent = new GUIContent();
 
+    private void Start()
+    {
+
+        //btnContent.image = btnTexture;
+        stopbtnContent.text = "Stop Match";
+        stopbtnStyle.normal.textColor = Color.blue;
+        stopbtnStyle.normal.background = (Texture2D)btnTexture;
+        stopbtnStyle.alignment = TextAnchor.MiddleCenter;
+        stopbtnStyle.font = Font.CreateDynamicFontFromOSFont("Arial", 16);
+
+
+        //btnContent.image = btnTexture;
+        btnContent.text = "Create Match";
+        createbtnStyle.normal.textColor = Color.blue;
+        createbtnStyle.normal.background = (Texture2D)btnTexture;
+        createbtnStyle.alignment = TextAnchor.MiddleCenter;
+        createbtnStyle.font = Font.CreateDynamicFontFromOSFont("Arial", 16);
+
+        //btnContent.image = btnTexture;
+        roomnameContent.text = "Room Name:";
+        roomnameStyle.normal.textColor = Color.blue;
+        roomnameStyle.normal.background = (Texture2D)btnTexture;
+        roomnameStyle.alignment = TextAnchor.MiddleCenter;
+        roomnameStyle.font = Font.CreateDynamicFontFromOSFont("Arial", 16);
+
+
+        //btnContent.image = btnTexture;
+        findMatchContent.text = "Find Match";
+        findMatchStyle.normal.textColor = Color.blue;
+        findMatchStyle.normal.background = (Texture2D)btnTexture;
+        findMatchStyle.alignment = TextAnchor.MiddleCenter;
+        findMatchStyle.font = Font.CreateDynamicFontFromOSFont("Arial", 16);
+
+        //btnContent.image = btnTexture;
+        matchStyle.normal.textColor = Color.blue;
+        matchStyle.normal.background = (Texture2D)btnTexture;
+        matchStyle.alignment = TextAnchor.MiddleCenter;
+        matchStyle.font = Font.CreateDynamicFontFromOSFont("Arial", 16);
+
+        //btnContent.image = btnTexture;
+        backMatchContent.text = "Back to Match Menu";
+        backMatchStyle.normal.textColor = Color.blue;
+        backMatchStyle.normal.background = (Texture2D)btnTexture;
+        backMatchStyle.alignment = TextAnchor.MiddleCenter;
+        backMatchStyle.font = Font.CreateDynamicFontFromOSFont("Arial", 16);
+    }
     void Awake()
     {
         //manager = GetComponent<NetworkManager>();
@@ -174,12 +220,6 @@ public class MyMatchMaker : MonoBehaviour
 
         if (NetworkServer.active || manager.IsClientConnected())
         {
-            //btnContent.image = btnTexture;
-            stopbtnContent.text = "Stop Match";
-            stopbtnStyle.normal.textColor = Color.blue;
-            stopbtnStyle.normal.background = (Texture2D)btnTexture;
-            stopbtnStyle.alignment = TextAnchor.MiddleCenter;
-            stopbtnStyle.font = Font.CreateDynamicFontFromOSFont("Arial", 16);
 
             if (GUI.Button(new Rect(xpos, ypos, 200, 40), stopbtnContent, stopbtnStyle))
             {
@@ -216,12 +256,6 @@ public class MyMatchMaker : MonoBehaviour
                 {
                     if (manager.matches == null)
                     {
-                        //btnContent.image = btnTexture;
-                        btnContent.text = "Create Match";
-                        createbtnStyle.normal.textColor = Color.blue;
-                        createbtnStyle.normal.background = (Texture2D)btnTexture;
-                        createbtnStyle.alignment = TextAnchor.MiddleCenter;
-                        createbtnStyle.font = Font.CreateDynamicFontFromOSFont("Arial", 16);
 
                         //if (GUI.Button(new Rect(xpos, ypos, 200, 20), "Create Internet Match"))
                         if (GUI.Button(new Rect(xpos, ypos, 200, 40), btnContent, createbtnStyle))
@@ -231,23 +265,11 @@ public class MyMatchMaker : MonoBehaviour
                         }
                         ypos += 40;
 
-                        //btnContent.image = btnTexture;
-                        roomnameContent.text = "Room Name:";
-                        roomnameStyle.normal.textColor = Color.blue;
-                        roomnameStyle.normal.background = (Texture2D)btnTexture;
-                        roomnameStyle.alignment = TextAnchor.MiddleCenter;
-                        roomnameStyle.font = Font.CreateDynamicFontFromOSFont("Arial", 16);
 
                         GUI.Label(new Rect(xpos, ypos, 150, 40), roomnameContent, roomnameStyle);
                         manager.matchName = GUI.TextField(new Rect(xpos + 150, ypos, 100, 40), manager.matchName);
                         ypos += 40;
 
-                        //btnContent.image = btnTexture;
-                        findMatchContent.text = "Find Match";
-                        findMatchStyle.normal.textColor = Color.blue;
-                        findMatchStyle.normal.background = (Texture2D)btnTexture;
-                        findMatchStyle.alignment = TextAnchor.MiddleCenter;
-                        findMatchStyle.font = Font.CreateDynamicFontFromOSFont("Arial", 16);
                         if (GUI.Button(new Rect(xpos, ypos, 200, 40), findMatchContent, findMatchStyle))
                         {
                             Debug.LogError("FindMatch");
@@ -261,12 +283,8 @@ public class MyMatchMaker : MonoBehaviour
                         {
                             var match = manager.matches[i];
 
-                            //btnContent.image = btnTexture;
                             matchContent.text = "Join Match:" + match.name;
-                            matchStyle.normal.textColor = Color.blue;
-                            matchStyle.normal.background = (Texture2D)btnTexture;
-                            matchStyle.alignment = TextAnchor.MiddleCenter;
-                            matchStyle.font = Font.CreateDynamicFontFromOSFont("Arial", 16);
+
                             if (GUI.Button(new Rect(xpos, ypos, 200, 40), matchContent, matchStyle))
                             {
                                 manager.matchName = match.name;
@@ -275,12 +293,6 @@ public class MyMatchMaker : MonoBehaviour
                             ypos += 40;
                         }
 
-                        //btnContent.image = btnTexture;
-                        backMatchContent.text = "Back to Match Menu";
-                        backMatchStyle.normal.textColor = Color.blue;
-                        backMatchStyle.normal.background = (Texture2D)btnTexture;
-                        backMatchStyle.alignment = TextAnchor.MiddleCenter;
-                        backMatchStyle.font = Font.CreateDynamicFontFromOSFont("Arial", 16);
                         if (GUI.Button(new Rect(xpos, ypos, 200, 40), backMatchContent, backMatchStyle))
                         {
                             Debug.LogError("BackToMenu");
