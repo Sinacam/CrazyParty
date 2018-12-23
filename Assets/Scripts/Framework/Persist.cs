@@ -5,7 +5,6 @@ using UnityEngine.Networking;
 
 public class Persist : NetworkBehaviour
 {
-
     void Start()
     {
         _net = (NetworkController)gameObject.GetComponent(typeof(NetworkController));
@@ -15,24 +14,33 @@ public class Persist : NetworkBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    SyncListInt _goodScores;
-    SyncListInt _evilScores;
+    void Update()
+    {
+        if(_lobby == null)
+        {
+            var l = Resources.FindObjectsOfTypeAll<Lobby>()[0];
+            l.gameObject.SetActive(true);
+            _lobby = l;
+        }
+    }
+
+    Lobby _lobby;
 
     NetworkController _net;
     SceneList _sl;
 
-    static Persist instance;
+    static public Persist instance;
 
     static public SyncListInt goodScores
     {
-        get { return instance._goodScores; }
-        set { instance._goodScores = value; }
+        get { return instance._lobby.goodScores; }
+        set { instance._lobby.goodScores = value; }
     }
 
     static public SyncListInt evilScores
     {
-        get { return instance._evilScores; }
-        set { instance._evilScores = value; }
+        get { return instance._lobby.evilScores; }
+        set { instance._lobby.evilScores = value; }
     }
 
     static public NetworkController net

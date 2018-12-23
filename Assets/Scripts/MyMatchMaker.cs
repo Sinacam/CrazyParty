@@ -1,5 +1,6 @@
 ﻿using UnityEngine.Networking;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MyMatchMaker : MonoBehaviour
 {
@@ -28,9 +29,59 @@ public class MyMatchMaker : MonoBehaviour
     GUIStyle backMatchStyle = new GUIStyle();
     GUIContent backMatchContent = new GUIContent();
 
+    private void Start()
+    {
+        if (manager == null)
+            manager = Persist.net;
+
+        //btnContent.image = btnTexture;
+        stopbtnContent.text = "Stop Match";
+        stopbtnStyle.normal.textColor = Color.blue;
+        stopbtnStyle.normal.background = (Texture2D)btnTexture;
+        stopbtnStyle.alignment = TextAnchor.MiddleCenter;
+        stopbtnStyle.font = Font.CreateDynamicFontFromOSFont("Arial", 16);
+
+
+        //btnContent.image = btnTexture;
+        btnContent.text = "Create Match";
+        createbtnStyle.normal.textColor = Color.blue;
+        createbtnStyle.normal.background = (Texture2D)btnTexture;
+        createbtnStyle.alignment = TextAnchor.MiddleCenter;
+        createbtnStyle.font = Font.CreateDynamicFontFromOSFont("Arial", 16);
+
+        //btnContent.image = btnTexture;
+        roomnameContent.text = "Room Name:";
+        roomnameStyle.normal.textColor = Color.blue;
+        roomnameStyle.normal.background = (Texture2D)btnTexture;
+        roomnameStyle.alignment = TextAnchor.MiddleCenter;
+        roomnameStyle.font = Font.CreateDynamicFontFromOSFont("Arial", 16);
+
+
+        //btnContent.image = btnTexture;
+        findMatchContent.text = "Find Match";
+        findMatchStyle.normal.textColor = Color.blue;
+        findMatchStyle.normal.background = (Texture2D)btnTexture;
+        findMatchStyle.alignment = TextAnchor.MiddleCenter;
+        findMatchStyle.font = Font.CreateDynamicFontFromOSFont("Arial", 16);
+
+        //btnContent.image = btnTexture;
+        matchStyle.normal.textColor = Color.blue;
+        matchStyle.normal.background = (Texture2D)btnTexture;
+        matchStyle.alignment = TextAnchor.MiddleCenter;
+        matchStyle.font = Font.CreateDynamicFontFromOSFont("Arial", 16);
+
+        //btnContent.image = btnTexture;
+        backMatchContent.text = "Back to Match Menu";
+        backMatchStyle.normal.textColor = Color.blue;
+        backMatchStyle.normal.background = (Texture2D)btnTexture;
+        backMatchStyle.alignment = TextAnchor.MiddleCenter;
+        backMatchStyle.font = Font.CreateDynamicFontFromOSFont("Arial", 16);
+    }
     void Awake()
     {
         //manager = GetComponent<NetworkManager>();
+        if (manager == null)
+            manager = Persist.net;
         if (manager.matchMaker == null)
             manager.StartMatchMaker();
         btnPosition = Camera.main.WorldToScreenPoint(new Vector3(0, 0, 0));
@@ -91,9 +142,23 @@ public class MyMatchMaker : MonoBehaviour
         Debug.Log(manager.matchMaker);*/
         if (!manager.IsClientConnected() && !NetworkServer.active && manager.matchMaker == null)
         {
+            if (manager == null)
+                manager = Persist.net;
+            manager.StartMatchMaker();
+            Debug.Log(SceneManager.GetSceneByName("Lobby").name);
+            if (SceneManager.GetSceneByName("Lobby").name != null)
+            {
+                SceneManager.SetActiveScene(SceneManager.GetSceneByName("Lobby"));
+            }
+            else
+            {
+                SceneManager.LoadScene("Lobby");
+            }
             //Debug.Log("1");
+            /*
             if (noConnection)
             {
+
                 if (UnityEngine.Application.platform != RuntimePlatform.WebGLPlayer)
                 {
                     if (GUI.Button(new Rect(xpos, ypos, 200, 20), "LAN Host(H)"))
@@ -136,7 +201,7 @@ public class MyMatchMaker : MonoBehaviour
                 {
                     manager.StopClient();
                 }
-            }
+            }*/
         }
         else
         {
@@ -174,20 +239,17 @@ public class MyMatchMaker : MonoBehaviour
 
         if (NetworkServer.active || manager.IsClientConnected())
         {
-            //btnContent.image = btnTexture;
-            stopbtnContent.text = "Stop Match";
-            stopbtnStyle.normal.textColor = Color.blue;
-            stopbtnStyle.normal.background = (Texture2D)btnTexture;
-            stopbtnStyle.alignment = TextAnchor.MiddleCenter;
-            stopbtnStyle.font = Font.CreateDynamicFontFromOSFont("Arial", 16);
 
             if (GUI.Button(new Rect(xpos, ypos, 200, 40), stopbtnContent, stopbtnStyle))
             {
-                Debug.LogError("StopMatch");
+                Debug.Log("StopMatch");
                 manager.StopHost();
                 //manager.StopMatchMaker();
                 if (manager.matchMaker == null)
+                {
                     manager.StartMatchMaker();
+                    SceneManager.LoadScene("Lobby");
+                }
             }
             ypos += 40;
         }
@@ -216,41 +278,25 @@ public class MyMatchMaker : MonoBehaviour
                 {
                     if (manager.matches == null)
                     {
-                        //btnContent.image = btnTexture;
-                        btnContent.text = "Create Match";
-                        createbtnStyle.normal.textColor = Color.blue;
-                        createbtnStyle.normal.background = (Texture2D)btnTexture;
-                        createbtnStyle.alignment = TextAnchor.MiddleCenter;
-                        createbtnStyle.font = Font.CreateDynamicFontFromOSFont("Arial", 16);
 
                         //if (GUI.Button(new Rect(xpos, ypos, 200, 20), "Create Internet Match"))
                         if (GUI.Button(new Rect(xpos, ypos, 200, 40), btnContent, createbtnStyle))
                         {
-                            Debug.LogError("CreateMatch");
+                            Debug.Log("CreateMatch");
                             manager.matchMaker.CreateMatch(manager.matchName, manager.matchSize, true, "", "", "", 0, 0, manager.OnMatchCreate);
+
+                            SceneManager.LoadScene("Room");
                         }
                         ypos += 40;
 
-                        //btnContent.image = btnTexture;
-                        roomnameContent.text = "Room Name:";
-                        roomnameStyle.normal.textColor = Color.blue;
-                        roomnameStyle.normal.background = (Texture2D)btnTexture;
-                        roomnameStyle.alignment = TextAnchor.MiddleCenter;
-                        roomnameStyle.font = Font.CreateDynamicFontFromOSFont("Arial", 16);
 
                         GUI.Label(new Rect(xpos, ypos, 150, 40), roomnameContent, roomnameStyle);
                         manager.matchName = GUI.TextField(new Rect(xpos + 150, ypos, 100, 40), manager.matchName);
                         ypos += 40;
 
-                        //btnContent.image = btnTexture;
-                        findMatchContent.text = "Find Match";
-                        findMatchStyle.normal.textColor = Color.blue;
-                        findMatchStyle.normal.background = (Texture2D)btnTexture;
-                        findMatchStyle.alignment = TextAnchor.MiddleCenter;
-                        findMatchStyle.font = Font.CreateDynamicFontFromOSFont("Arial", 16);
                         if (GUI.Button(new Rect(xpos, ypos, 200, 40), findMatchContent, findMatchStyle))
                         {
-                            Debug.LogError("FindMatch");
+                            Debug.Log("FindMatch");
                             manager.matchMaker.ListMatches(0, 20, "", false, 0, 0, manager.OnMatchList);
                         }
                         ypos += 40;
@@ -261,30 +307,24 @@ public class MyMatchMaker : MonoBehaviour
                         {
                             var match = manager.matches[i];
 
-                            //btnContent.image = btnTexture;
                             matchContent.text = "Join Match:" + match.name;
-                            matchStyle.normal.textColor = Color.blue;
-                            matchStyle.normal.background = (Texture2D)btnTexture;
-                            matchStyle.alignment = TextAnchor.MiddleCenter;
-                            matchStyle.font = Font.CreateDynamicFontFromOSFont("Arial", 16);
+
                             if (GUI.Button(new Rect(xpos, ypos, 200, 40), matchContent, matchStyle))
                             {
                                 manager.matchName = match.name;
                                 manager.matchMaker.JoinMatch(match.networkId, "", "", "", 0, 0, manager.OnMatchJoined);
+
+                                SceneManager.LoadScene("Room");
                             }
                             ypos += 40;
                         }
 
-                        //btnContent.image = btnTexture;
-                        backMatchContent.text = "Back to Match Menu";
-                        backMatchStyle.normal.textColor = Color.blue;
-                        backMatchStyle.normal.background = (Texture2D)btnTexture;
-                        backMatchStyle.alignment = TextAnchor.MiddleCenter;
-                        backMatchStyle.font = Font.CreateDynamicFontFromOSFont("Arial", 16);
                         if (GUI.Button(new Rect(xpos, ypos, 200, 40), backMatchContent, backMatchStyle))
                         {
-                            Debug.LogError("BackToMenu");
+                            Debug.Log("BackToMenu");
                             manager.matches = null;
+                            SceneManager.SetActiveScene(SceneManager.GetSceneByName("Lobby"));
+                            //SceneManager.LoadScene("Lobby");
                         }
                         ypos += 40;
                     }
@@ -331,94 +371,3 @@ public class MyMatchMaker : MonoBehaviour
         }
     }
 }
-
-/*
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Networking;
-using UnityEngine.Networking.Match;
-
-
-public class MyMatchMaker : MonoBehaviour {
-
-    void Start()
-    {
-        NetworkManager.singleton.StartMatchMaker();
-    }
-
-    //call this method to request a match to be created on the server
-    public void CreateInternetMatch(string matchName)
-    {
-        NetworkManager.singleton.matchMaker.CreateMatch(matchName, 4, true, "", "", "", 0, 0, OnInternetMatchCreate);
-    }
-
-    //this method is called when your request for creating a match is returned
-    private void OnInternetMatchCreate(bool success, string extendedInfo, MatchInfo matchInfo)
-    {
-        if (success)
-        {
-            //Debug.Log("Create match succeeded");
-
-            MatchInfo hostInfo = matchInfo;
-            NetworkServer.Listen(hostInfo, 9000);
-
-            NetworkManager.singleton.StartHost(hostInfo);
-        }
-        else
-        {
-            Debug.LogError("Create match failed");
-        }
-    }
-
-    //call this method to find a match through the matchmaker
-    public void FindInternetMatch(string matchName)
-    {
-        NetworkManager.singleton.matchMaker.ListMatches(0, 10, matchName, true, 0, 0, OnInternetMatchList);
-    }
-
-    //this method is called when a list of matches is returned
-    private void OnInternetMatchList(bool success, string extendedInfo, List<MatchInfoSnapshot> matches)
-    {
-        if (success)
-        {
-            if (matches.Count != 0)
-            {
-                //Debug.Log("A list of matches was returned");
-
-                //join the last server (just in case there are two...)
-                NetworkManager.singleton.matchMaker.JoinMatch(matches[matches.Count - 1].networkId, "", "", "", 0, 0, OnJoinInternetMatch);
-            }
-            else
-            {
-                Debug.Log("No matches in requested room!");
-            }
-        }
-        else
-        {
-            Debug.LogError("Couldn't connect to match maker");
-        }
-    }
-
-    //this method is called when your request to join a match is returned
-    private void OnJoinInternetMatch(bool success, string extendedInfo, MatchInfo matchInfo)
-    {
-        if (success)
-        {
-            //Debug.Log("Able to join a match");
-
-            MatchInfo hostInfo = matchInfo;
-            NetworkManager.singleton.StartClient(hostInfo);
-        }
-        else
-        {
-            Debug.LogError("Join match failed");
-        }
-    }
-
-    public void OnDestroy()
-    {
-        NetworkManager.singleton.StopHost();
-    }
-}
-*/
