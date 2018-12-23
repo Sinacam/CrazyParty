@@ -5,7 +5,6 @@ using UnityEngine.Networking;
 
 public class Persist : NetworkBehaviour
 {
-
     void Start()
     {
         _net = (NetworkController)gameObject.GetComponent(typeof(NetworkController));
@@ -15,8 +14,7 @@ public class Persist : NetworkBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    SyncListInt _goodScores;
-    SyncListInt _evilScores;
+    Lobby _lobby;
 
     NetworkController _net;
     SceneList _sl;
