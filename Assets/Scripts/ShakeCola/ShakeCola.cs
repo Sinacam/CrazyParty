@@ -27,6 +27,8 @@ public class ShakeCola : PlayerBehaviour
             group = role % 2; //group為0或1
             print("group:" + group);
         }
+
+        Invoke("getEnd", 10f); //10秒到會自動結束
     }
 
     // Update is called once per frame
@@ -37,10 +39,10 @@ public class ShakeCola : PlayerBehaviour
             return;
         }
 
-        if (Input.GetMouseButton(0)) //滑鼠左鍵(手機點擊）
-        {
-            CmdShakeCola();
-        }
+        //if (Input.GetMouseButton(0)) //滑鼠左鍵(手機點擊）
+        //{
+        //    CmdShakeCola();
+        //}
 
         if (playerFinish)
         { //如果玩家已經結束遊戲
@@ -58,18 +60,21 @@ public class ShakeCola : PlayerBehaviour
             {
                 LevelDone(0, 0);
             }
+
+            //遊戲結束，調整手機顯示方式
+            GameObject.Find("Main Camera").GetComponent<Orientation>().reorientate();
         }
     }
 
     public void getEnd()
     { //Endline如果偵測到可樂已經搖滿房間，會呼叫這個function，設定該玩家已可結束遊戲
-        //print("get end!");
         playerFinish = true;
     }
 
     [Command] //執行shake cola動作（要從client傳到server)
-    void CmdShakeCola()
+    public void CmdShakeCola()
     {
+        GetComponent<AudioSource>().Play(); //播放音效
         countShake += 1;
         print("countShake:" + countShake);
         groupScore[group] += countShake;

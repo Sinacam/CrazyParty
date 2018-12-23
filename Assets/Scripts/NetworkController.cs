@@ -7,8 +7,10 @@ using UnityEngine.SceneManagement;
 public class NetworkController : NetworkManager
 {
     string sceneName;
-    int[] roles = new int[4];
-
+	public int maxLevels = 1;
+	int levelCount = 0;
+	
+	int[] roles = new int[4];
     object countLock = new object();
     int roleCount = 0;
     public int clientCount
@@ -18,8 +20,6 @@ public class NetworkController : NetworkManager
     }
 
     int levelDoneCount = 0;
-
-    int[] playerIds = { -1, -1, -1, -1 };
 
     static void Shuffle(int[] arr)  // How the hell is this not in the standard library??
     {
@@ -39,14 +39,7 @@ public class NetworkController : NetworkManager
         base.OnServerConnect(conn);
         lock (countLock)
         {
-            // In game or full.
-            if(sceneName != null || clientCount > 4)
-            {
-                conn.Disconnect();
-                return;
-            }
             clientCount++;
-            playerIds[System.Array.IndexOf(playerIds, -1)] = conn.connectionId;
         }
     }
 
@@ -56,7 +49,6 @@ public class NetworkController : NetworkManager
         lock (countLock)
         {
             clientCount--;
-            playerIds[System.Array.IndexOf(playerIds, conn.connectionId)] = -1;
         }
     }
 
@@ -91,7 +83,7 @@ public class NetworkController : NetworkManager
         if (loader == null)
         {
             Debug.LogError("Game object doesn't contain a SceneLoader script");
-            StartCoroutine(SpawnOnClientsReady(conn, playerPrefab, id, -1));    // Spawn default player prefab.
+            StartCoroutine(SpawnOnClientsReady(conn, playerPrefab, id, -1));
         }
         else
         {
@@ -120,7 +112,6 @@ public class NetworkController : NetworkManager
         var player = (GameObject)GameObject.Instantiate(playerPrefab);
         var pb = (PlayerBehaviour)player.GetComponent(typeof(PlayerBehaviour));
         pb.role = role;
-        pb.playerId = playerIds[System.Array.IndexOf(playerIds, conn.connectionId)];
         pb.Init();
         NetworkServer.AddPlayerForConnection(conn, player, id);
     }
@@ -130,8 +121,17 @@ public class NetworkController : NetworkManager
         lock(countLock)
         {
             levelDoneCount++;
-            if (levelDoneCount >= clientCount)
-                ServerChangeScene("LoadingNext");
+            if (levelDoneCount >= clientCount) {
+				//change to next level
+				levelCount ++;
+				if(levelCount>=maxLevels) {
+					//finished playing
+					ServerChangeScene("FinalResult");
+				}
+				else 
+					ServerChangeScene("LoadingNext");
+			}
+                
         }
     }
 }

@@ -55,6 +55,11 @@ public class PullBehaviour : PlayerBehaviour
             }
 
         }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            LevelDone(1, 0);
+        }
     }
 
     void OnMouseDown()
