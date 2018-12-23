@@ -242,7 +242,7 @@ public class MyMatchMaker : MonoBehaviour
 
             if (GUI.Button(new Rect(xpos, ypos, 200, 40), stopbtnContent, stopbtnStyle))
             {
-                Debug.LogError("StopMatch");
+                Debug.Log("StopMatch");
                 manager.StopHost();
                 //manager.StopMatchMaker();
                 if (manager.matchMaker == null)
@@ -282,7 +282,7 @@ public class MyMatchMaker : MonoBehaviour
                         //if (GUI.Button(new Rect(xpos, ypos, 200, 20), "Create Internet Match"))
                         if (GUI.Button(new Rect(xpos, ypos, 200, 40), btnContent, createbtnStyle))
                         {
-                            Debug.LogError("CreateMatch");
+                            Debug.Log("CreateMatch");
                             manager.matchMaker.CreateMatch(manager.matchName, manager.matchSize, true, "", "", "", 0, 0, manager.OnMatchCreate);
 
                             SceneManager.LoadScene("Room");
@@ -296,7 +296,7 @@ public class MyMatchMaker : MonoBehaviour
 
                         if (GUI.Button(new Rect(xpos, ypos, 200, 40), findMatchContent, findMatchStyle))
                         {
-                            Debug.LogError("FindMatch");
+                            Debug.Log("FindMatch");
                             manager.matchMaker.ListMatches(0, 20, "", false, 0, 0, manager.OnMatchList);
                         }
                         ypos += 40;
@@ -321,7 +321,7 @@ public class MyMatchMaker : MonoBehaviour
 
                         if (GUI.Button(new Rect(xpos, ypos, 200, 40), backMatchContent, backMatchStyle))
                         {
-                            Debug.LogError("BackToMenu");
+                            Debug.Log("BackToMenu");
                             manager.matches = null;
                             SceneManager.SetActiveScene(SceneManager.GetSceneByName("Lobby"));
                             //SceneManager.LoadScene("Lobby");

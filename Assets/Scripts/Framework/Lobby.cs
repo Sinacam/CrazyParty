@@ -12,7 +12,6 @@ public class Lobby : NetworkBehaviour
     void Start()
     {
         DontDestroyOnLoad(this);
-        Persist.instance.BindLobby(this);
     }
 
     public void GotoLoadNext()

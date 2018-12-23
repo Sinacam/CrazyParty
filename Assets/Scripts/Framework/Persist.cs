@@ -14,11 +14,17 @@ public class Persist : NetworkBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    Lobby _lobby;
-    public void BindLobby(Lobby l)
+    void Update()
     {
-        _lobby = l;
+        if(_lobby == null)
+        {
+            var l = Resources.FindObjectsOfTypeAll<Lobby>()[0];
+            l.gameObject.SetActive(true);
+            _lobby = l;
+        }
     }
+
+    Lobby _lobby;
 
     NetworkController _net;
     SceneList _sl;

@@ -7,6 +7,7 @@ TagManager:
   - rightPull
   - leftPull
   - wind
+  - Lobby
   layers:
   - Default
   - TransparentFX

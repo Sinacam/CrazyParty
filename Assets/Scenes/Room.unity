@@ -694,7 +694,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 971400174}
-        m_MethodName: gotoGame
+        m_MethodName: GotoLoadNext
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
