@@ -1,5 +1,6 @@
 ﻿using UnityEngine.Networking;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MyMatchMaker : MonoBehaviour
 {
@@ -30,6 +31,8 @@ public class MyMatchMaker : MonoBehaviour
 
     private void Start()
     {
+
+        manager = Persist.net;
 
         //btnContent.image = btnTexture;
         stopbtnContent.text = "Stop Match";
@@ -77,6 +80,8 @@ public class MyMatchMaker : MonoBehaviour
     void Awake()
     {
         //manager = GetComponent<NetworkManager>();
+        if (manager == null)
+            manager = Persist.net;
         if (manager.matchMaker == null)
             manager.StartMatchMaker();
         btnPosition = Camera.main.WorldToScreenPoint(new Vector3(0, 0, 0));
@@ -137,9 +142,13 @@ public class MyMatchMaker : MonoBehaviour
         Debug.Log(manager.matchMaker);*/
         if (!manager.IsClientConnected() && !NetworkServer.active && manager.matchMaker == null)
         {
+            manager.StartMatchMaker();
+            SceneManager.LoadScene("Lobby");
             //Debug.Log("1");
+            /*
             if (noConnection)
             {
+
                 if (UnityEngine.Application.platform != RuntimePlatform.WebGLPlayer)
                 {
                     if (GUI.Button(new Rect(xpos, ypos, 200, 20), "LAN Host(H)"))
@@ -182,7 +191,7 @@ public class MyMatchMaker : MonoBehaviour
                 {
                     manager.StopClient();
                 }
-            }
+            }*/
         }
         else
         {
@@ -227,7 +236,10 @@ public class MyMatchMaker : MonoBehaviour
                 manager.StopHost();
                 //manager.StopMatchMaker();
                 if (manager.matchMaker == null)
+                {
                     manager.StartMatchMaker();
+                    SceneManager.LoadScene("Lobby");
+                }
             }
             ypos += 40;
         }
@@ -262,6 +274,8 @@ public class MyMatchMaker : MonoBehaviour
                         {
                             Debug.LogError("CreateMatch");
                             manager.matchMaker.CreateMatch(manager.matchName, manager.matchSize, true, "", "", "", 0, 0, manager.OnMatchCreate);
+
+                            SceneManager.LoadScene("Room");
                         }
                         ypos += 40;
 
@@ -289,6 +303,8 @@ public class MyMatchMaker : MonoBehaviour
                             {
                                 manager.matchName = match.name;
                                 manager.matchMaker.JoinMatch(match.networkId, "", "", "", 0, 0, manager.OnMatchJoined);
+
+                                SceneManager.LoadScene("Room");
                             }
                             ypos += 40;
                         }
@@ -297,6 +313,7 @@ public class MyMatchMaker : MonoBehaviour
                         {
                             Debug.LogError("BackToMenu");
                             manager.matches = null;
+                            SceneManager.LoadScene("Lobby");
                         }
                         ypos += 40;
                     }
