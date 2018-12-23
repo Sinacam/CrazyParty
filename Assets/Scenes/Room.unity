@@ -113,79 +113,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &289827661
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 289827663}
-  - component: {fileID: 289827662}
-  - component: {fileID: 289827664}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &289827662
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 289827661}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bcf7f1cd7dce484381ed3fccf1fc2dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &289827663
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 289827661}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.8, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &289827664
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 289827661}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 0
-    i1: 0
-    i2: 0
-    i3: 0
-    i4: 0
-    i5: 0
-    i6: 0
-    i7: 0
-    i8: 0
-    i9: 0
-    i10: 0
-    i11: 0
-    i12: 0
-    i13: 0
-    i14: 0
-    i15: 0
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
 --- !u!1 &429031231
 GameObject:
   m_ObjectHideFlags: 0
@@ -614,8 +541,8 @@ GameObject:
   - component: {fileID: 971400177}
   - component: {fileID: 971400176}
   - component: {fileID: 971400175}
-  - component: {fileID: 971400174}
   - component: {fileID: 971400173}
+  - component: {fileID: 971400174}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -681,7 +608,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 971400171}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a728678ee6a7fb04da8a506419dfdd2f, type: 3}
+  m_Script: {fileID: 11500000, guid: 7daf606e9d2ad1444a11bee8902b7d60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &971400175
@@ -724,7 +651,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 971400174}
-        m_MethodName: GotoLoadNext
+        m_MethodName: gotoGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

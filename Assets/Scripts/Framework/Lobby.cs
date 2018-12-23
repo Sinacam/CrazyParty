@@ -33,7 +33,7 @@ public class Lobby : NetworkBehaviour
         }*/
         
     }
-    public void GotoLoadNext()
+    public void GotoRoom()
     {
         if (!isServer)
             return;
@@ -46,7 +46,7 @@ public class Lobby : NetworkBehaviour
             Persist.evilScores.Add(0);
         }
 
-        Persist.net.ServerChangeScene("LoadingNext");
+        Persist.net.ServerChangeScene("Room");
         
     }
 }
