@@ -727,9 +727,9 @@ PlayerSettings:
     UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: a9a2044e-be7f-4fa0-b217-6f7d963a31d6
-  projectName: CrazyParty
-  organizationId: kihosi
+  cloudProjectId: dbac38c1-2be5-46e1-8d92-d99d42b4be14
+  projectName: CrazyParty (7)
+  organizationId: nicole2092455
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
