@@ -6,8 +6,9 @@ using UnityEngine.UI;
 
 public class ShowCurrentScore : PlayerBehaviour {
 
-	// Use this for initialization
-	void Start () {
+ 
+    // Use this for initialization
+    void Start () {
 
         if (isLocalPlayer)
             return;
