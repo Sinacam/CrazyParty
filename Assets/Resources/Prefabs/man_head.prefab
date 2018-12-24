@@ -39,7 +39,6 @@ GameObject:
   - component: {fileID: 222320276432410122}
   - component: {fileID: 114498095370463178}
   - component: {fileID: 114526174431978166}
-  - component: {fileID: 114034888703192898}
   - component: {fileID: 114597146060711888}
   m_Layer: 5
   m_Name: man_head
@@ -48,19 +47,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &114034888703192898
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1819478118443234}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 948bb15a4aa04a6468fc96455c0ba6ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  role: 0
-  playerId: 0
 --- !u!114 &114491857752905604
 MonoBehaviour:
   m_ObjectHideFlags: 1

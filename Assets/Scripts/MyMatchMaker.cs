@@ -1,10 +1,11 @@
 ﻿using UnityEngine.Networking;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MyMatchMaker : MonoBehaviour
 {
     public NetworkManager manager;
-    public Texture btnTexture;
+    public Texture btnTexture, matchTexture;
 
     [SerializeField] public bool showGUI = true;
 
@@ -30,6 +31,8 @@ public class MyMatchMaker : MonoBehaviour
 
     private void Start()
     {
+        if (manager == null)
+            manager = Persist.net;
 
         //btnContent.image = btnTexture;
         stopbtnContent.text = "Stop Match";
@@ -63,7 +66,7 @@ public class MyMatchMaker : MonoBehaviour
 
         //btnContent.image = btnTexture;
         matchStyle.normal.textColor = Color.blue;
-        matchStyle.normal.background = (Texture2D)btnTexture;
+        matchStyle.normal.background = (Texture2D) matchTexture;
         matchStyle.alignment = TextAnchor.MiddleCenter;
         matchStyle.font = Font.CreateDynamicFontFromOSFont("Arial", 16);
 
@@ -77,6 +80,8 @@ public class MyMatchMaker : MonoBehaviour
     void Awake()
     {
         //manager = GetComponent<NetworkManager>();
+        if (manager == null)
+            manager = Persist.net;
         if (manager.matchMaker == null)
             manager.StartMatchMaker();
         btnPosition = Camera.main.WorldToScreenPoint(new Vector3(0, 0, 0));
@@ -137,9 +142,23 @@ public class MyMatchMaker : MonoBehaviour
         Debug.Log(manager.matchMaker);*/
         if (!manager.IsClientConnected() && !NetworkServer.active && manager.matchMaker == null)
         {
+            if (manager == null)
+                manager = Persist.net;
+            manager.StartMatchMaker();
+            Debug.Log(SceneManager.GetSceneByName("Lobby").name);
+            if (SceneManager.GetSceneByName("Lobby").name != null)
+            {
+                SceneManager.SetActiveScene(SceneManager.GetSceneByName("Lobby"));
+            }
+            else
+            {
+                SceneManager.LoadScene("Lobby");
+            }
             //Debug.Log("1");
+            /*
             if (noConnection)
             {
+
                 if (UnityEngine.Application.platform != RuntimePlatform.WebGLPlayer)
                 {
                     if (GUI.Button(new Rect(xpos, ypos, 200, 20), "LAN Host(H)"))
@@ -182,8 +201,9 @@ public class MyMatchMaker : MonoBehaviour
                 {
                     manager.StopClient();
                 }
-            }
+            }*/
         }
+        /*
         else
         {
             //Debug.Log("2");
@@ -216,18 +236,30 @@ public class MyMatchMaker : MonoBehaviour
                 }
             }
             ypos += spacing;
-        }
+        }*/
 
         if (NetworkServer.active || manager.IsClientConnected())
         {
 
             if (GUI.Button(new Rect(xpos, ypos, 200, 40), stopbtnContent, stopbtnStyle))
             {
-                Debug.LogError("StopMatch");
+                Debug.Log("StopMatch");
                 manager.StopHost();
+                
+                Persist.net.clientCount = 0;
                 //manager.StopMatchMaker();
                 if (manager.matchMaker == null)
+                {
                     manager.StartMatchMaker();
+                    if (SceneManager.GetSceneByName("Lobby").name != null)
+                    {
+                        SceneManager.SetActiveScene(SceneManager.GetSceneByName("Lobby"));
+                    }
+                    else
+                    {
+                        SceneManager.LoadScene("Lobby");
+                    }
+                }
             }
             ypos += 40;
         }
@@ -235,12 +267,12 @@ public class MyMatchMaker : MonoBehaviour
         if (!NetworkServer.active && !manager.IsClientConnected() && noConnection)
         {
             ypos += 10;
-
+            /*
             if (UnityEngine.Application.platform == RuntimePlatform.WebGLPlayer)
             {
                 GUI.Box(new Rect(xpos - 5, ypos, 220, 25), "(WebGL cannot use Match Maker)");
                 return;
-            }
+            }*/
 
             if (manager.matchMaker == null)
             {
@@ -260,8 +292,19 @@ public class MyMatchMaker : MonoBehaviour
                         //if (GUI.Button(new Rect(xpos, ypos, 200, 20), "Create Internet Match"))
                         if (GUI.Button(new Rect(xpos, ypos, 200, 40), btnContent, createbtnStyle))
                         {
-                            Debug.LogError("CreateMatch");
+                            Debug.Log("CreateMatch");
                             manager.matchMaker.CreateMatch(manager.matchName, manager.matchSize, true, "", "", "", 0, 0, manager.OnMatchCreate);
+
+                            Persist.net.clientCount = 0;
+                            //SceneManager.LoadScene("Room");
+                            if (SceneManager.GetSceneByName("Room").name != null)
+                            {
+                                SceneManager.SetActiveScene(SceneManager.GetSceneByName("Room"));
+                            }
+                            else
+                            {
+                                SceneManager.LoadScene("Room");
+                            }
                         }
                         ypos += 40;
 
@@ -272,7 +315,7 @@ public class MyMatchMaker : MonoBehaviour
 
                         if (GUI.Button(new Rect(xpos, ypos, 200, 40), findMatchContent, findMatchStyle))
                         {
-                            Debug.LogError("FindMatch");
+                            Debug.Log("FindMatch");
                             manager.matchMaker.ListMatches(0, 20, "", false, 0, 0, manager.OnMatchList);
                         }
                         ypos += 40;
@@ -289,14 +332,27 @@ public class MyMatchMaker : MonoBehaviour
                             {
                                 manager.matchName = match.name;
                                 manager.matchMaker.JoinMatch(match.networkId, "", "", "", 0, 0, manager.OnMatchJoined);
+
+                                if (SceneManager.GetSceneByName("Room").name != null)
+                                {
+                                    SceneManager.SetActiveScene(SceneManager.GetSceneByName("Room"));
+                                }
+                                else
+                                {
+                                    SceneManager.LoadScene("Room");
+                                }
+                                //SceneManager.LoadScene("Room");
                             }
                             ypos += 40;
                         }
 
                         if (GUI.Button(new Rect(xpos, ypos, 200, 40), backMatchContent, backMatchStyle))
                         {
-                            Debug.LogError("BackToMenu");
+                            Debug.Log("BackToMenu");
                             manager.matches = null;
+                            
+                            SceneManager.SetActiveScene(SceneManager.GetSceneByName("Lobby"));
+                            //SceneManager.LoadScene("Lobby");
                         }
                         ypos += 40;
                     }
@@ -343,94 +399,3 @@ public class MyMatchMaker : MonoBehaviour
         }
     }
 }
-
-/*
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Networking;
-using UnityEngine.Networking.Match;
-
-
-public class MyMatchMaker : MonoBehaviour {
-
-    void Start()
-    {
-        NetworkManager.singleton.StartMatchMaker();
-    }
-
-    //call this method to request a match to be created on the server
-    public void CreateInternetMatch(string matchName)
-    {
-        NetworkManager.singleton.matchMaker.CreateMatch(matchName, 4, true, "", "", "", 0, 0, OnInternetMatchCreate);
-    }
-
-    //this method is called when your request for creating a match is returned
-    private void OnInternetMatchCreate(bool success, string extendedInfo, MatchInfo matchInfo)
-    {
-        if (success)
-        {
-            //Debug.Log("Create match succeeded");
-
-            MatchInfo hostInfo = matchInfo;
-            NetworkServer.Listen(hostInfo, 9000);
-
-            NetworkManager.singleton.StartHost(hostInfo);
-        }
-        else
-        {
-            Debug.LogError("Create match failed");
-        }
-    }
-
-    //call this method to find a match through the matchmaker
-    public void FindInternetMatch(string matchName)
-    {
-        NetworkManager.singleton.matchMaker.ListMatches(0, 10, matchName, true, 0, 0, OnInternetMatchList);
-    }
-
-    //this method is called when a list of matches is returned
-    private void OnInternetMatchList(bool success, string extendedInfo, List<MatchInfoSnapshot> matches)
-    {
-        if (success)
-        {
-            if (matches.Count != 0)
-            {
-                //Debug.Log("A list of matches was returned");
-
-                //join the last server (just in case there are two...)
-                NetworkManager.singleton.matchMaker.JoinMatch(matches[matches.Count - 1].networkId, "", "", "", 0, 0, OnJoinInternetMatch);
-            }
-            else
-            {
-                Debug.Log("No matches in requested room!");
-            }
-        }
-        else
-        {
-            Debug.LogError("Couldn't connect to match maker");
-        }
-    }
-
-    //this method is called when your request to join a match is returned
-    private void OnJoinInternetMatch(bool success, string extendedInfo, MatchInfo matchInfo)
-    {
-        if (success)
-        {
-            //Debug.Log("Able to join a match");
-
-            MatchInfo hostInfo = matchInfo;
-            NetworkManager.singleton.StartClient(hostInfo);
-        }
-        else
-        {
-            Debug.LogError("Join match failed");
-        }
-    }
-
-    public void OnDestroy()
-    {
-        NetworkManager.singleton.StopHost();
-    }
-}
-*/

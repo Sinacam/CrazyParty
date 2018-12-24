@@ -27,9 +27,9 @@ public class Orientation : MonoBehaviour {
         Screen.autorotateToLandscapeRight = true;
 
         // 設定是否可以 正向
-        Screen.autorotateToPortrait = true;
+        Screen.autorotateToPortrait = false;
 
         // 設定是否可以 倒向
-        Screen.autorotateToPortraitUpsideDown = true;
+        Screen.autorotateToPortraitUpsideDown = false;
     }
 }

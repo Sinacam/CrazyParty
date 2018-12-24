@@ -23,7 +23,7 @@ public class SceneLoader : NetworkBehaviour {
 
         foreach (var s in spawnablePrefabs)
             ClientScene.RegisterPrefab(s);
-
+        
         ClientScene.AddPlayer(connectionToServer, 0);
     }
 
@@ -36,9 +36,15 @@ public class SceneLoader : NetworkBehaviour {
     void OnDestroy()
     {
         foreach (var p in playerPrefabs)
+        {
             ClientScene.UnregisterPrefab(p);
+            Debug.Log(p.name);
+        }
 
         foreach (var s in spawnablePrefabs)
+        {
             ClientScene.UnregisterPrefab(s);
+            Debug.Log(s.name);
+        }
     }
 }

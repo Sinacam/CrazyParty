@@ -34,7 +34,6 @@ public class Endline : MonoBehaviour
         // Step two
         foreach (var shakeCola in clones)
             shakeCola.getEnd();
-        //print("success!");
 
     }
 }
