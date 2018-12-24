@@ -638,7 +638,7 @@ MonoBehaviour:
   matchSize: 4
   isNetworkActive: 0
   matchMaker: {fileID: 0}
-  maxLevels: 2
+  maxLevels: 1
   clientCount: 0
 --- !u!114 &621226984
 MonoBehaviour:
