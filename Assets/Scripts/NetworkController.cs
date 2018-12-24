@@ -13,11 +13,13 @@ public class NetworkController : NetworkManager
 	int[] roles = new int[4];
     object countLock = new object();
     int roleCount = 0;
-    public int clientCount
+    
+    public int clientCount;
+    /*
     {
         get;
         private set;
-    }
+    }*/
 
     int levelDoneCount = 0;
 
@@ -40,6 +42,7 @@ public class NetworkController : NetworkManager
         lock (countLock)
         {
             clientCount++;
+            Debug.Log("Serverconnect");
         }
     }
 
@@ -49,6 +52,7 @@ public class NetworkController : NetworkManager
         lock (countLock)
         {
             clientCount--;
+            Debug.Log("serverdisconnect");
         }
     }
 
@@ -121,6 +125,7 @@ public class NetworkController : NetworkManager
         lock(countLock)
         {
             levelDoneCount++;
+            Debug.Log("NC" + levelDoneCount + " " + clientCount);
             if (levelDoneCount >= clientCount) {
 				//change to next level
 				levelCount ++;

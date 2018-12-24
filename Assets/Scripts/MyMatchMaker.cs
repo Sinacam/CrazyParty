@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class MyMatchMaker : MonoBehaviour
 {
     public NetworkManager manager;
-    public Texture btnTexture;
+    public Texture btnTexture, matchTexture;
 
     [SerializeField] public bool showGUI = true;
 
@@ -66,7 +66,7 @@ public class MyMatchMaker : MonoBehaviour
 
         //btnContent.image = btnTexture;
         matchStyle.normal.textColor = Color.blue;
-        matchStyle.normal.background = (Texture2D)btnTexture;
+        matchStyle.normal.background = (Texture2D) matchTexture;
         matchStyle.alignment = TextAnchor.MiddleCenter;
         matchStyle.font = Font.CreateDynamicFontFromOSFont("Arial", 16);
 
@@ -203,6 +203,7 @@ public class MyMatchMaker : MonoBehaviour
                 }
             }*/
         }
+        /*
         else
         {
             //Debug.Log("2");
@@ -235,7 +236,7 @@ public class MyMatchMaker : MonoBehaviour
                 }
             }
             ypos += spacing;
-        }
+        }*/
 
         if (NetworkServer.active || manager.IsClientConnected())
         {
@@ -244,11 +245,20 @@ public class MyMatchMaker : MonoBehaviour
             {
                 Debug.Log("StopMatch");
                 manager.StopHost();
+                
+                Persist.net.clientCount = 0;
                 //manager.StopMatchMaker();
                 if (manager.matchMaker == null)
                 {
                     manager.StartMatchMaker();
-                    SceneManager.LoadScene("Lobby");
+                    if (SceneManager.GetSceneByName("Lobby").name != null)
+                    {
+                        SceneManager.SetActiveScene(SceneManager.GetSceneByName("Lobby"));
+                    }
+                    else
+                    {
+                        SceneManager.LoadScene("Lobby");
+                    }
                 }
             }
             ypos += 40;
@@ -257,12 +267,12 @@ public class MyMatchMaker : MonoBehaviour
         if (!NetworkServer.active && !manager.IsClientConnected() && noConnection)
         {
             ypos += 10;
-
+            /*
             if (UnityEngine.Application.platform == RuntimePlatform.WebGLPlayer)
             {
                 GUI.Box(new Rect(xpos - 5, ypos, 220, 25), "(WebGL cannot use Match Maker)");
                 return;
-            }
+            }*/
 
             if (manager.matchMaker == null)
             {
@@ -285,7 +295,16 @@ public class MyMatchMaker : MonoBehaviour
                             Debug.Log("CreateMatch");
                             manager.matchMaker.CreateMatch(manager.matchName, manager.matchSize, true, "", "", "", 0, 0, manager.OnMatchCreate);
 
-                            SceneManager.LoadScene("Room");
+                            Persist.net.clientCount = 0;
+                            //SceneManager.LoadScene("Room");
+                            if (SceneManager.GetSceneByName("Room").name != null)
+                            {
+                                SceneManager.SetActiveScene(SceneManager.GetSceneByName("Room"));
+                            }
+                            else
+                            {
+                                SceneManager.LoadScene("Room");
+                            }
                         }
                         ypos += 40;
 
@@ -314,7 +333,15 @@ public class MyMatchMaker : MonoBehaviour
                                 manager.matchName = match.name;
                                 manager.matchMaker.JoinMatch(match.networkId, "", "", "", 0, 0, manager.OnMatchJoined);
 
-                                SceneManager.LoadScene("Room");
+                                if (SceneManager.GetSceneByName("Room").name != null)
+                                {
+                                    SceneManager.SetActiveScene(SceneManager.GetSceneByName("Room"));
+                                }
+                                else
+                                {
+                                    SceneManager.LoadScene("Room");
+                                }
+                                //SceneManager.LoadScene("Room");
                             }
                             ypos += 40;
                         }
@@ -323,6 +350,7 @@ public class MyMatchMaker : MonoBehaviour
                         {
                             Debug.Log("BackToMenu");
                             manager.matches = null;
+                            
                             SceneManager.SetActiveScene(SceneManager.GetSceneByName("Lobby"));
                             //SceneManager.LoadScene("Lobby");
                         }

@@ -13,6 +13,9 @@ public class Lobby : NetworkBehaviour
     {
         DontDestroyOnLoad(this);
     }
+    private void Update()
+    {
+    }
 
     public void GotoLoadNext()
     {

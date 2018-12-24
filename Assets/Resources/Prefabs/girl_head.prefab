@@ -39,7 +39,6 @@ GameObject:
   - component: {fileID: 222992542189507458}
   - component: {fileID: 114075973341674672}
   - component: {fileID: 114572244708140796}
-  - component: {fileID: 114286161048637588}
   - component: {fileID: 114878791980122708}
   m_Layer: 5
   m_Name: girl_head
@@ -108,19 +107,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 0
---- !u!114 &114286161048637588
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1299980854367848}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 948bb15a4aa04a6468fc96455c0ba6ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  role: 0
-  playerId: 0
 --- !u!114 &114572244708140796
 MonoBehaviour:
   m_ObjectHideFlags: 1
