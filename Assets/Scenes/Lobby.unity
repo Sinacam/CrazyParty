@@ -579,10 +579,10 @@ MonoBehaviour:
   m_OfflineScene: 
   m_OnlineScene: 
   m_SpawnPrefabs:
-  - {fileID: 1013548303175148, guid: 0949a8af1012441809cf6ccf097add69, type: 2}
-  - {fileID: 1957946538081914, guid: 162c61ac4f01a4cb8937ccd1281c4aa3, type: 2}
-  - {fileID: 1841599386823556, guid: 1898c208e860b4beaa030cfc8e0736e7, type: 2}
-  - {fileID: 1357396639270960, guid: eb4ac87b05d164c1ea78a73616148d7f, type: 2}
+  - {fileID: 1841599386823556, guid: 55b9ec4aebb7da94289640bfd29749cc, type: 2}
+  - {fileID: 1013548303175148, guid: d51acf92d26f1d2439efc915e2b112eb, type: 2}
+  - {fileID: 1957946538081914, guid: c649d6f202e3b604c8d631825f444a11, type: 2}
+  - {fileID: 1357396639270960, guid: 7f2761a186d0cfd4cb34bd0750502ef8, type: 2}
   m_CustomConfig: 0
   m_MaxConnections: 4
   m_ConnectionConfig:
@@ -638,7 +638,7 @@ MonoBehaviour:
   matchSize: 4
   isNetworkActive: 0
   matchMaker: {fileID: 0}
-  maxLevels: 5
+  maxLevels: 2
   clientCount: 0
 --- !u!114 &621226984
 MonoBehaviour:

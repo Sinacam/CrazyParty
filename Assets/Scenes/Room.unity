@@ -276,13 +276,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 449634429}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdb78f14411fe432cb0f5edef5b146be, type: 3}
+  m_Script: {fileID: 11500000, guid: 36bdfbf0a6214f641bfe1bc603936125, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  man: {fileID: 1357396639270960, guid: eb4ac87b05d164c1ea78a73616148d7f, type: 2}
-  girl: {fileID: 1957946538081914, guid: 162c61ac4f01a4cb8937ccd1281c4aa3, type: 2}
-  elf: {fileID: 1013548303175148, guid: 0949a8af1012441809cf6ccf097add69, type: 2}
-  krampus: {fileID: 1841599386823556, guid: 1898c208e860b4beaa030cfc8e0736e7, type: 2}
+  man: {fileID: 1357396639270960, guid: 7f2761a186d0cfd4cb34bd0750502ef8, type: 2}
+  girl: {fileID: 1957946538081914, guid: c649d6f202e3b604c8d631825f444a11, type: 2}
+  elf: {fileID: 1013548303175148, guid: d51acf92d26f1d2439efc915e2b112eb, type: 2}
+  krampus: {fileID: 1841599386823556, guid: 55b9ec4aebb7da94289640bfd29749cc, type: 2}
 --- !u!114 &449634431
 MonoBehaviour:
   m_ObjectHideFlags: 0

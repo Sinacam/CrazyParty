@@ -34,10 +34,4 @@ public class ShowCurrentScore : PlayerBehaviour {
         print(Persist.goodScores[3] + Persist.evilScores[3]);
 
     }
-	
-	// Update is called once per frame
-	void Update () {
- 
-    }
-
 }
