@@ -5,12 +5,6 @@ using UnityEngine.Networking;
 
 public class PlayerController : PlayerBehaviour
 {
-
-    void Start()
-    {
-        Debug.Log("Role = " + role.ToString());
-    }
-
     void Update()
     {
         if (!isLocalPlayer)
@@ -22,6 +16,15 @@ public class PlayerController : PlayerBehaviour
         transform.Translate(x, y, 0);
 
         if (Input.GetKeyDown(KeyCode.Space))
-            LevelDone();
+            LevelDone(0, 0);
+
+        goodScore += 42;
+        evilScore -= 42;
+
+        string s = "";
+        foreach (var i in Persist.goodScores)
+            s += i + " ";
+
+        Debug.Log(s);
     }
 }

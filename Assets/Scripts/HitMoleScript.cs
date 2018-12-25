@@ -10,9 +10,9 @@ public class HitMoleScript : PlayerBehaviour
     public NetworkIdentity[] networkIdentity;
 
 
-    public Vector2[] holePosition;
-    public bool[] holeOccupied;
-    public GameObject[] moleList;
+    public Vector2[] holePosition = new Vector2[numOfHole];
+    public bool[] holeOccupied = new bool[numOfHole];
+    public GameObject[] moleList = new GameObject[numOfHole];
     public Collider2D coll;
 
     public static int numOfHole;
