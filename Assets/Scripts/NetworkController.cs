@@ -7,21 +7,18 @@ using UnityEngine.SceneManagement;
 public class NetworkController : NetworkManager
 {
     string sceneName;
-	public int maxLevels = 5;
-	int levelCount = 0;
-	
-	int[] roles = new int[4];
+    int[] roles = new int[4];
+
+    public int maxLevels = 5;
+    int levelCount = 0;
+
     object countLock = new object();
     int roleCount = 0;
-    
     public int clientCount;
-    /*
-    {
-        get;
-        private set;
-    }*/
 
     int levelDoneCount = 0;
+
+    int[] playerIds = { -1, -1, -1, -1 };
 
     static void Shuffle(int[] arr)  // How the hell is this not in the standard library??
     {
@@ -41,8 +38,14 @@ public class NetworkController : NetworkManager
         base.OnServerConnect(conn);
         lock (countLock)
         {
+            // In game or full.
+            if (sceneName != null || clientCount > 4)
+            {
+                conn.Disconnect();
+                return;
+            }
             clientCount++;
-            Debug.Log("Serverconnect");
+            playerIds[System.Array.IndexOf(playerIds, -1)] = conn.connectionId;
         }
     }
 
@@ -52,7 +55,7 @@ public class NetworkController : NetworkManager
         lock (countLock)
         {
             clientCount--;
-            Debug.Log("serverdisconnect");
+            playerIds[System.Array.IndexOf(playerIds, conn.connectionId)] = -1;
         }
     }
 
@@ -63,11 +66,11 @@ public class NetworkController : NetworkManager
         roles = new int[clientCount];
         for (int i = 0; i < roles.Length; i++)
             roles[i] = i;
-        
+
         Shuffle(roles);
 
         // Race condition if Unity doesn't ignore AddPlayer from earlier scenes.
-        lock(countLock)
+        lock (countLock)
         {
             roleCount = 0;
             levelDoneCount = 0;
@@ -87,7 +90,7 @@ public class NetworkController : NetworkManager
         if (loader == null)
         {
             Debug.LogError("Game object doesn't contain a SceneLoader script");
-            StartCoroutine(SpawnOnClientsReady(conn, playerPrefab, id, -1));
+            StartCoroutine(SpawnOnClientsReady(conn, playerPrefab, id, -1));    // Spawn default player prefab.
         }
         else
         {
@@ -112,31 +115,28 @@ public class NetworkController : NetworkManager
             }
             yield return null;
         }
-        
+
         var player = (GameObject)GameObject.Instantiate(playerPrefab);
         var pb = (PlayerBehaviour)player.GetComponent(typeof(PlayerBehaviour));
         pb.role = role;
+        pb.playerId = playerIds[System.Array.IndexOf(playerIds, conn.connectionId)];
         pb.Init();
         NetworkServer.AddPlayerForConnection(conn, player, id);
     }
 
     public void ServerLevelDone()
     {
-        lock(countLock)
+        lock (countLock)
         {
             levelDoneCount++;
-            Debug.Log("NC" + levelDoneCount + " " + clientCount);
-            if (levelDoneCount >= clientCount) {
-				//change to next level
-				levelCount ++;
-				if(levelCount>=maxLevels) {
-					//finished playing
-					ServerChangeScene("FinalResult");
-				}
-				else 
-					ServerChangeScene("LoadingNext");
-			}
-                
+            if (levelDoneCount >= clientCount)
+            {
+                levelCount++;
+                if (levelCount >= maxLevels)
+                    ServerChangeScene("FinalResult");
+                else
+                    ServerChangeScene("LoadingNext");
+            }
         }
     }
 }

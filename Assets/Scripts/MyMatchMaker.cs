@@ -31,6 +31,7 @@ public class MyMatchMaker : MonoBehaviour
 
     private void Start()
     {
+        DontDestroyOnLoad(this);
         if (manager == null)
             manager = Persist.net;
 
@@ -66,7 +67,7 @@ public class MyMatchMaker : MonoBehaviour
 
         //btnContent.image = btnTexture;
         matchStyle.normal.textColor = Color.blue;
-        matchStyle.normal.background = (Texture2D) matchTexture;
+        matchStyle.normal.background = matchTexture as Texture2D;
         matchStyle.alignment = TextAnchor.MiddleCenter;
         matchStyle.font = Font.CreateDynamicFontFromOSFont("Arial", 16);
 

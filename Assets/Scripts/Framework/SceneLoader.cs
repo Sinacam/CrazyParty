@@ -38,13 +38,13 @@ public class SceneLoader : NetworkBehaviour {
         foreach (var p in playerPrefabs)
         {
             ClientScene.UnregisterPrefab(p);
-            Debug.Log(p.name);
+            //Debug.Log(p.name);
         }
 
         foreach (var s in spawnablePrefabs)
         {
             ClientScene.UnregisterPrefab(s);
-            Debug.Log(s.name);
+            //Debug.Log(s.name);
         }
     }
 }

@@ -463,6 +463,8 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114286161048637588, guid: cfa3f5fc5efdcd04bad35cf4d38db2a4, type: 2}
+    - {fileID: 114878791980122708, guid: cfa3f5fc5efdcd04bad35cf4d38db2a4, type: 2}
+    - {fileID: 114572244708140796, guid: cfa3f5fc5efdcd04bad35cf4d38db2a4, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: cfa3f5fc5efdcd04bad35cf4d38db2a4, type: 2}
   m_IsPrefabAsset: 0
 --- !u!224 &202695507 stripped
@@ -569,6 +571,8 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114010874699354100, guid: 4edd971d0b1ff194bbb05b7807277bd5, type: 2}
+    - {fileID: 114017187743669672, guid: 4edd971d0b1ff194bbb05b7807277bd5, type: 2}
+    - {fileID: 114984581557858832, guid: 4edd971d0b1ff194bbb05b7807277bd5, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 4edd971d0b1ff194bbb05b7807277bd5, type: 2}
   m_IsPrefabAsset: 0
 --- !u!224 &535741846 stripped
@@ -675,6 +679,8 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114888269030483920, guid: 36f6ec59a394d5a419b6fd7155046c28, type: 2}
+    - {fileID: 114388904197782906, guid: 36f6ec59a394d5a419b6fd7155046c28, type: 2}
+    - {fileID: 114081407296353652, guid: 36f6ec59a394d5a419b6fd7155046c28, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 36f6ec59a394d5a419b6fd7155046c28, type: 2}
   m_IsPrefabAsset: 0
 --- !u!224 &750544400 stripped
@@ -772,6 +778,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8f1f869bae7a674ea58ca2cdf0bcea4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  t: {fileID: 0}
 --- !u!4 &1161009123
 Transform:
   m_ObjectHideFlags: 0
@@ -1092,6 +1099,8 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114034888703192898, guid: 425eb6322a125df42af56538e2a72d6c, type: 2}
+    - {fileID: 114597146060711888, guid: 425eb6322a125df42af56538e2a72d6c, type: 2}
+    - {fileID: 114526174431978166, guid: 425eb6322a125df42af56538e2a72d6c, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 425eb6322a125df42af56538e2a72d6c, type: 2}
   m_IsPrefabAsset: 0
 --- !u!224 &1497466729 stripped

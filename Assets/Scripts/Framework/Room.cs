@@ -114,4 +114,10 @@ public class Room : NetworkBehaviour {
             }
         }
     }
+    private void OnDestroy()
+    {
+        var mm = GameObject.Find("MyMatchMaker");
+        //Debug.Log(mm);
+        //Destroy(mm);
+    }
 }
