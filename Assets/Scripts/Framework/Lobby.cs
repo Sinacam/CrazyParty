@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class Lobby : NetworkBehaviour
 {
     public SyncListInt goodScores = new SyncListInt(), evilScores = new SyncListInt();
+    public int playerId;
 
     void Start()
     {

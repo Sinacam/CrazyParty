@@ -34,6 +34,7 @@ public class PlayerBehaviour : NetworkBehaviour
             evilScore += evil;
             levelDone = true;
             CmdLevelDone();
+            Persist.GetLobby().playerId = playerId;
         }
     }
     

@@ -17,7 +17,7 @@ public class Persist : NetworkBehaviour
     NetworkController _net;
     SceneList _sl;
 
-    static Lobby GetLobby()
+    static public Lobby GetLobby()
     {
         return (Lobby)GameObject.Find("LobbyManager").GetComponent(typeof(Lobby));
     }
