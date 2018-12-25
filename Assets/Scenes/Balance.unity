@@ -288,7 +288,7 @@ GameObject:
   - component: {fileID: 467740264}
   - component: {fileID: 467740263}
   m_Layer: 0
-  m_Name: Background
+  m_Name: 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

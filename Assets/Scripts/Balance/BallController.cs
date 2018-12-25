@@ -6,16 +6,12 @@ public class BallController : PlayerBehaviour
 {
     public float sensitivity = 10f;
     public float windStrength = 10f;
-
     Rigidbody rb;
     float elapsed;
-
-    bool useGyro;
 
     void Start()
     {
         rb = (Rigidbody)gameObject.GetComponent(typeof(Rigidbody));
-        useGyro = Input.gyro.enabled;
     }
     
     void Update()
@@ -23,27 +19,14 @@ public class BallController : PlayerBehaviour
         if (!isLocalPlayer)
             return;
 
-        float x = 0, y = 0;
-
-#if UNITY_ANDROID
-        Vector3 gravity;
-        if (useGyro)
-            gravity = Input.gyro.gravity.normalized;
-        else
-            gravity = Input.acceleration.normalized;
-
-        x += gravity.x * sensitivity;
-        y += gravity.y * sensitivity;
-#else
-        x += Input.GetAxis("Horizontal") * sensitivity;
-        y += Input.GetAxis("Vertical") * sensitivity;
-#endif
-
+        var x = Input.GetAxis("Horizontal") * sensitivity;
+        var y = Input.GetAxis("Vertical") * sensitivity;
 
         var winds = GameObject.FindGameObjectsWithTag("wind");
         foreach (var w in winds)
         {
-            var a = WindController.GetAzimuth(w.transform.position) * Mathf.Deg2Rad;
+            var wc = (WindController)w.GetComponent(typeof(WindController));
+            var a = wc.GetAzimuth() * Mathf.Deg2Rad;
             x -= Mathf.Cos(a) * windStrength;
             y -= Mathf.Sin(a) * windStrength;
         }

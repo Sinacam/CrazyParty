@@ -9,10 +9,10 @@ public class WindController : PlayerBehaviour
     GameObject ball;
     float elapsed;
 
-    static public float GetAzimuth(Vector3 pos)
+    public float GetAzimuth()
     {
-        var deg = Vector3.Angle(Vector3.right, pos);
-        if (pos.y < 0)
+        var deg = Vector3.Angle(Vector3.right, transform.position);
+        if (transform.position.y < 0)
             return 360 - deg;
         else
             return deg;
@@ -21,11 +21,6 @@ public class WindController : PlayerBehaviour
     void AddAzimuth(float deg)
     {
         CmdAddAzimuth(deg);
-    }
-
-    void SetAzimuth(float deg)
-    {
-        CmdAddAzimuth(deg - GetAzimuth(transform.position));
     }
 
     [Command]
@@ -44,29 +39,27 @@ public class WindController : PlayerBehaviour
         if (!isLocalPlayer)
             return;
 
-#if UNITY_ANDROID
-        
-#else
         var x = Input.GetAxis("Horizontal");
         var y = Input.GetAxis("Vertical");
-        var a = GetAzimuth(transform.position);
+        var a = GetAzimuth();
         float da = 0;
 
         // Cutoff to avoid ambiguoous directions.
         if (a < 180 - cutoff && a > cutoff)
             da -= x;
-        else if (a > 180 + cutoff && a < 360 - cutoff)
+        else if(a > 180 + cutoff && a < 360 - cutoff)
             da += x;
 
         if (a < 90 - cutoff || a > 270 + cutoff)
             da += y;
-        else if (a > 90 + cutoff && a < 270 - cutoff)
+        else if(a > 90 + cutoff && a < 270 - cutoff)
             da -= y;
 
         da = Mathf.Clamp(da, -1f, 1f) * Time.deltaTime * sensitivity;
 
+        Debug.Log("a = " + GetAzimuth() + ", da = " + da);
+
         AddAzimuth(da);
-#endif
 
         elapsed += Time.deltaTime;
 
@@ -75,7 +68,7 @@ public class WindController : PlayerBehaviour
             LevelDone(1, 0);
         }
 
-        if (elapsed > 10)
+        if(elapsed > 10)
         {
             LevelDone(0, 0);
         }
