@@ -2,18 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeviceRotate : MonoBehaviour { //偵測手機陀螺儀
+public class DeviceRotate : MonoBehaviour
+{ //偵測手機陀螺儀
 
     private const float lowPassFilterFactor = 0.2f;
 
     //可讓手機震動！
     void Update()
     {
-        CheckVibrate();
-    }
+#if UNITY_STANDALONE
 
-    private void CheckVibrate()
-    {
+#else
         m_newAcceleration = Input.acceleration; //抓手機陀螺儀位置
         m_detalAcceleration = m_newAcceleration - m_oldAcceleration;
         m_oldAcceleration = m_newAcceleration;
@@ -33,10 +32,8 @@ public class DeviceRotate : MonoBehaviour { //偵測手機陀螺儀
             foreach (var shakeCola in clones)
                 shakeCola.CmdShakeCola();
             //print("success!");
-
-
         }
-
+#endif
     }
 
     //private void OnGUI() //測試

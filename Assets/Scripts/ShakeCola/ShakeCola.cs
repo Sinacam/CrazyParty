@@ -27,6 +27,8 @@ public class ShakeCola : PlayerBehaviour
             group = role % 2; //group為0或1
             print("group:" + group);
         }
+
+        Invoke("getEnd", 10f);
     }
 
     // Update is called once per frame

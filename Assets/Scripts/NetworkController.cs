@@ -9,6 +9,9 @@ public class NetworkController : NetworkManager
     string sceneName;
     int[] roles = new int[4];
 
+    public int maxLevels = 5;
+    int levelCount = 0;
+
     object countLock = new object();
     int roleCount = 0;
     public int clientCount
@@ -40,7 +43,7 @@ public class NetworkController : NetworkManager
         lock (countLock)
         {
             // In game or full.
-            if(sceneName != null || clientCount > 4)
+            if (sceneName != null || clientCount > 4)
             {
                 conn.Disconnect();
                 return;
@@ -67,11 +70,11 @@ public class NetworkController : NetworkManager
         roles = new int[clientCount];
         for (int i = 0; i < roles.Length; i++)
             roles[i] = i;
-        
+
         Shuffle(roles);
 
         // Race condition if Unity doesn't ignore AddPlayer from earlier scenes.
-        lock(countLock)
+        lock (countLock)
         {
             roleCount = 0;
             levelDoneCount = 0;
@@ -116,7 +119,7 @@ public class NetworkController : NetworkManager
             }
             yield return null;
         }
-        
+
         var player = (GameObject)GameObject.Instantiate(playerPrefab);
         var pb = (PlayerBehaviour)player.GetComponent(typeof(PlayerBehaviour));
         pb.role = role;
@@ -127,11 +130,17 @@ public class NetworkController : NetworkManager
 
     public void ServerLevelDone()
     {
-        lock(countLock)
+        lock (countLock)
         {
             levelDoneCount++;
             if (levelDoneCount >= clientCount)
-                ServerChangeScene("LoadingNext");
+            {
+                levelCount++;
+                if (levelCount >= maxLevels)
+                    ServerChangeScene("FinalResult");
+                else
+                    ServerChangeScene("LoadingNext");
+            }
         }
     }
 }
