@@ -267,11 +267,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelScenes:
   - name: TugOfWar
-    active: 0
+    active: 1
   - name: ShakeCola
-    active: 0
+    active: 1
   - name: HitMole
-    active: 0
+    active: 1
   - name: Balance
     active: 1
   - name: LevelTemplate
