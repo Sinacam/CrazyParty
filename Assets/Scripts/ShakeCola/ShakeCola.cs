@@ -28,7 +28,7 @@ public class ShakeCola : PlayerBehaviour
             print("group:" + group);
         }
 
-        Invoke("getEnd", 10f);
+        Invoke("getEnd", 10f); //10秒到會自動結束
     }
 
     // Update is called once per frame
@@ -68,21 +68,16 @@ public class ShakeCola : PlayerBehaviour
 
     public void getEnd()
     { //Endline如果偵測到可樂已經搖滿房間，會呼叫這個function，設定該玩家已可結束遊戲
-        //print("get end!");
         playerFinish = true;
     }
 
     [Command] //執行shake cola動作（要從client傳到server)
     public void CmdShakeCola()
     {
-        //if (colaColor.transform.position.y < 210) //到頂就不能繼續填滿了
-        //{
-        //print("position:" + colaColor.transform.position.y);
         GetComponent<AudioSource>().Play(); //播放音效
         countShake += 1;
         print("countShake:" + countShake);
         groupScore[group] += countShake;
         colaColor.transform.Translate(yposition + new Vector2(0, 20));
-        //}
     }
 }

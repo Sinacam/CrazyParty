@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeviceRotate : MonoBehaviour
-{ //偵測手機陀螺儀
+public class DeviceRotate : MonoBehaviour { //偵測手機陀螺儀
 
     private const float lowPassFilterFactor = 0.2f;
 
     //可讓手機震動！
     void Update()
     {
-#if UNITY_STANDALONE
+        //CheckVibrate();
+    }
 
-#else
+    private void CheckVibrate()
+    {
         m_newAcceleration = Input.acceleration; //抓手機陀螺儀位置
         m_detalAcceleration = m_newAcceleration - m_oldAcceleration;
         m_oldAcceleration = m_newAcceleration;
@@ -32,15 +33,11 @@ public class DeviceRotate : MonoBehaviour
             foreach (var shakeCola in clones)
                 shakeCola.CmdShakeCola();
             //print("success!");
-        }
-#endif
-    }
 
-    //private void OnGUI() //測試
-    //{
-    //    GUI.contentColor = Color.black;
-    //    GUI.Label(new Rect(50, 100, 500, 20), "Label : " + m_newAcceleration + "       " + m_oldAcceleration + "         ");
-    //}
+        
+        }
+
+    }
 
     [SerializeField] //Serialize功能(序列化的意思是说再次读取Unity时序列化的变量是有值的，不需要你再次去赋值，因为它已经被保存下来)
     protected float m_checkValue = 0.8f;
