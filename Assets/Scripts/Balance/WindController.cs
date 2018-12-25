@@ -58,7 +58,7 @@ public class WindController : PlayerBehaviour
 
         elapsed += Time.deltaTime;
 
-        if (GameObject.Find("BalanceBall").transform.position.sqrMagnitude > 16)
+        if (GameObject.FindWithTag("balanceBall").transform.position.sqrMagnitude > 16)
         {
             LevelDone(1, 0);
         }
