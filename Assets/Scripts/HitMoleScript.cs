@@ -16,6 +16,7 @@ public class HitMoleScript : PlayerBehaviour
     public Collider2D coll;
 
     public static int numOfHole;
+    float timer = 0;
 
     // Use this for initialization
     void Start()
@@ -35,6 +36,8 @@ public class HitMoleScript : PlayerBehaviour
     {
         if (!isServer)
             return;
+        if (timer <= 2)
+            return;
 
         if (Random.Range(0, 100) <= 10)
             CmdSpawnMole();
@@ -45,6 +48,8 @@ public class HitMoleScript : PlayerBehaviour
     {
         if (!isServer)
             return;
+
+        timer += Time.deltaTime;
 
         int i;
         RaycastHit2D hit;

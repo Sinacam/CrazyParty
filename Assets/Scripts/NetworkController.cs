@@ -14,11 +14,12 @@ public class NetworkController : NetworkManager
 
     object countLock = new object();
     int roleCount = 0;
-    public int clientCount
+    public int clientCount;
+    /*
     {
         get;
         private set;
-    }
+    }*/
 
     int levelDoneCount = 0;
 

@@ -59,7 +59,7 @@ public class HitMoleController : PlayerBehaviour
 
         timer += Time.deltaTime;
 
-        if (timer > 10)
+        if (timer > 12)
         {
             LevelDone(localGoodScore, localEvilScore);
 
