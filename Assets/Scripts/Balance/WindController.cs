@@ -29,11 +29,6 @@ public class WindController : PlayerBehaviour
         transform.RotateAround(Vector3.zero, Vector3.forward, deg);
     }
 
-    void Start()
-    {
-        ball = GameObject.Find("BalanceBall");
-    }
-
     void Update()
     {
         if (!isLocalPlayer)
@@ -63,7 +58,7 @@ public class WindController : PlayerBehaviour
 
         elapsed += Time.deltaTime;
 
-        if (ball.transform.position.sqrMagnitude > 16)
+        if (GameObject.Find("BalanceBall").transform.position.sqrMagnitude > 16)
         {
             LevelDone(1, 0);
         }
