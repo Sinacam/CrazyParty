@@ -13,22 +13,37 @@ public class BallController : PlayerBehaviour
     {
         rb = (Rigidbody)gameObject.GetComponent(typeof(Rigidbody));
     }
-    
+
+    static Vector3 gravity()
+    {
+        if (SystemInfo.supportsGyroscope)
+        {
+            Input.gyro.enabled = true;
+            return Input.gyro.gravity.normalized;
+        }
+        else
+            return Input.acceleration.normalized;
+    }
+
     void Update()
     {
         if (!isLocalPlayer)
             return;
+
 #if UNITY_STANDALONE
         var x = Input.GetAxis("Horizontal") * sensitivity;
         var y = Input.GetAxis("Vertical") * sensitivity;
 #else
-
+        var grav = gravity();
+        var x = grav.x;
+        var y = grav.y;
 #endif
+
         var winds = GameObject.FindGameObjectsWithTag("wind");
         foreach (var w in winds)
         {
-            var wc = (WindController)w.GetComponent(typeof(WindController));
-            var a = wc.GetAzimuth() * Mathf.Deg2Rad;
+            var diff = w.transform.position - transform.position;
+            var a = WindController.GetAzimuth(diff) * Mathf.Deg2Rad;
             x -= Mathf.Cos(a) * windStrength;
             y -= Mathf.Sin(a) * windStrength;
         }
