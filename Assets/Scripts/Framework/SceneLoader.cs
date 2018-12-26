@@ -10,6 +10,8 @@ public class SceneLoader : NetworkBehaviour {
 
     void Start()
     {
+        Persist.instance.showGUI = false;
+
         foreach (var p in playerPrefabs)
         {
             if (p.GetComponent(typeof(PlayerBehaviour)))
@@ -25,6 +27,7 @@ public class SceneLoader : NetworkBehaviour {
             ClientScene.RegisterPrefab(s);
 
         ClientScene.AddPlayer(connectionToServer, 0);
+        
     }
 
     void Update()

@@ -35,5 +35,6 @@ public class Lobby : NetworkBehaviour
         }
 
         Persist.net.ServerChangeScene("LoadingNext");
+
     }
 }

@@ -12,6 +12,8 @@ public class Persist : NetworkBehaviour
         _sl = (SceneList)gameObject.GetComponent(typeof(SceneList));
         instance = this;
 
+        this.showGUI = true;
+
         manager = Persist.net;
         btnPosition = Camera.main.WorldToScreenPoint(new Vector3(0, 0, 0));
 
@@ -369,12 +371,25 @@ public class Persist : NetworkBehaviour
             }
         }
     }
-        static public Lobby GetLobby()
+
+    public void StartShowGui()
+    {
+        Persist.instance.showGUI = true;
+        if (manager != null){
+            
+            manager.matches = null;
+            manager.StopHost();
+            manager.StopMatchMaker();
+        }
+        SceneManager.LoadScene("Lobby");
+    }
+
+    static public Lobby GetLobby()
     {
         return (Lobby)GameObject.Find("LobbyManager").GetComponent(typeof(Lobby));
     }
 
-    static Persist instance;
+    static public Persist instance;
 
     static public SyncListInt goodScores
     {
