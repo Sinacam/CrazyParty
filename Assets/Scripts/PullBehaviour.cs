@@ -6,17 +6,12 @@ using UnityEngine.Audio;
 
 public class PullBehaviour : PlayerBehaviour
 {
-
-   
+    bool buttonSpawned;
+    public GameObject pullButton;
 
     float dir
     {
         get { return role % 2 == 0 ? 1 : -1; }
-    }
-
-    override public void Init()
-    {
-        transform.position += new Vector3(dir * 7, 0, 0);
     }
 
     float elapsed;
@@ -26,9 +21,18 @@ public class PullBehaviour : PlayerBehaviour
         if (!isLocalPlayer)
             return;
 
+        if (!buttonSpawned)
+        {
+            var pb = Instantiate(pullButton);
+            pb.transform.position += new Vector3(dir * 7, 0, 0);
+            var pc = (PullController)pb.GetComponent(typeof(PullController));
+            pc.player = this;
+            buttonSpawned = true;
+        }
+
         elapsed += Time.deltaTime;
 
-        if (elapsed > 10 )
+        if (elapsed > 10)
         {
             float pos = GameObject.Find("bow1").transform.position.x;
 
@@ -57,14 +61,9 @@ public class PullBehaviour : PlayerBehaviour
         }
     }
 
-    void OnMouseDown()
+    public void Pull()
     {
-        if (!isLocalPlayer)
-            return;
-
-        GetComponent<AudioSource>().Play();
         Cmdmove();
-        
     }
 
 
