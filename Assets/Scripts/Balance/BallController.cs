@@ -18,10 +18,12 @@ public class BallController : PlayerBehaviour
     {
         if (!isLocalPlayer)
             return;
-
+#if UNITY_STANDALONE
         var x = Input.GetAxis("Horizontal") * sensitivity;
         var y = Input.GetAxis("Vertical") * sensitivity;
+#else
 
+#endif
         var winds = GameObject.FindGameObjectsWithTag("wind");
         foreach (var w in winds)
         {

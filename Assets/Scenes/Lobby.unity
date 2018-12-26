@@ -271,9 +271,9 @@ MonoBehaviour:
   - name: ShakeCola
     active: 0
   - name: HitMole
-    active: 1
-  - name: Balance
     active: 0
+  - name: Balance
+    active: 1
   - name: LevelTemplate
     active: 0
 --- !u!1 &744716550
