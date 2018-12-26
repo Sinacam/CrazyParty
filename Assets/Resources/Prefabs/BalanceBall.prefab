@@ -148,8 +148,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   role: 0
   playerId: 0
-  sensitivity: 50
-  windStrength: 10
+  sensitivity: 200
+  windStrength: 5
 --- !u!114 &114849844649873566
 MonoBehaviour:
   m_ObjectHideFlags: 1

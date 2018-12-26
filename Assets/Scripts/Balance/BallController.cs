@@ -35,8 +35,8 @@ public class BallController : PlayerBehaviour
         var y = Input.GetAxis("Vertical") * sensitivity;
 #else
         var grav = gravity();
-        var x = grav.x;
-        var y = grav.y;
+        var x = grav.x * sensitivity;
+        var y = grav.y * sensitivity;
 #endif
 
         var winds = GameObject.FindGameObjectsWithTag("wind");

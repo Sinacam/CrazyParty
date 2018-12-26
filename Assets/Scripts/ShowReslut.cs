@@ -32,8 +32,8 @@ public class ShowReslut : MonoBehaviour
             var gsrf = (RectTransform)gs.GetComponent(typeof(RectTransform));
             var esrf = (RectTransform)es.GetComponent(typeof(RectTransform));
 
-            gsrf.sizeDelta = new Vector2(Persist.goodScores[i] * 8, 70);
-            esrf.sizeDelta = new Vector2(Persist.evilScores[i] * 8, 70);
+            gsrf.sizeDelta = new Vector2(Persist.goodScores[i] * 5, 70);
+            esrf.sizeDelta = new Vector2(Persist.evilScores[i] * 5, 70);
         }
 
         int maxTotal = 0, maxTotali = 0;
