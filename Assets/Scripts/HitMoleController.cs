@@ -9,7 +9,7 @@ public class HitMoleController : PlayerBehaviour
 
     public Vector2[] holePosition;
     public bool[] holeOccupied;
-    int localGoodScore, localEvilScore;
+    int localGoodScore;
 
     float timer = 0;
 
@@ -50,7 +50,7 @@ public class HitMoleController : PlayerBehaviour
                     {
                         GetComponent<AudioSource>().Play();
                         CmdDestroyMole(hit.collider.gameObject, this.role, this.playerId);
-                        localEvilScore++;
+                        localGoodScore++;
                         //Persist.goodScores[this.playerId]++;
                     }
                 }
@@ -61,7 +61,7 @@ public class HitMoleController : PlayerBehaviour
 
         if (timer > 12)
         {
-            LevelDone(localGoodScore, localEvilScore);
+            LevelDone(localGoodScore, 0);
 
             for (i = 0; i < 4; i++)
             {

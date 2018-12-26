@@ -71,6 +71,9 @@ public class ShowReslut : MonoBehaviour
 
             gsrf.sizeDelta = new Vector2(1f * Persist.goodScores[i] / maxTotal * 350, 70);
             esrf.sizeDelta = new Vector2(1f * Persist.evilScores[i] / maxTotal * 350, 70);
+
+            Debug.Log("goodScores = " + Persist.goodScores[i]);
+            Debug.Log("evilScores = " + Persist.evilScores[i]);
         }
     }
     public void StartShowGui()
