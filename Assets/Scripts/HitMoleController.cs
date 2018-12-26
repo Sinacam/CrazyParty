@@ -37,25 +37,6 @@ public class HitMoleController : PlayerBehaviour
             }
         }
 
-        if (Input.touchCount > 0)
-        {
-            for (i = 0; i < Input.touchCount; i++)
-            {
-                RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.GetTouch(i).position), Vector2.zero);
-
-                if (hit.collider != null)
-                {
-                    //Debug.Log(hit.collider.gameObject.name == "Mole(Clone)");
-                    if (hit.collider.gameObject.name == "Mole(Clone)")
-                    {
-                        GetComponent<AudioSource>().Play();
-                        CmdDestroyMole(hit.collider.gameObject, this.role, this.playerId);
-                        localGoodScore++;
-                        //Persist.goodScores[this.playerId]++;
-                    }
-                }
-            }
-        }
 
         timer += Time.deltaTime;
 

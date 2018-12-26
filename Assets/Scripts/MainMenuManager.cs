@@ -10,7 +10,7 @@ public class MainMenuManager : MonoBehaviour {
     [SerializeField] AudioSource bgm;
 	// Use this for initialization
 	void Start () {
-        sliderBar.SetActive(false);
+        //sliderBar.SetActive(false);
         bgm.Play();
 	}
 	
@@ -24,6 +24,7 @@ public class MainMenuManager : MonoBehaviour {
     }
     public void SliderSetActived()
     {
+        /*
         if (sliderBar.active)
         {
             sliderBar.SetActive(false);
@@ -31,11 +32,12 @@ public class MainMenuManager : MonoBehaviour {
         else
         {
             sliderBar.SetActive(true);
-        }
+        }*/
     }
     public void VolumeCtrl()
     {
+        /*
         soundVolume = slider.value;
-        bgm.volume = soundVolume;
+        bgm.volume = soundVolume;*/
     }
 }
