@@ -24,17 +24,7 @@ public class ShowReslut : MonoBehaviour
         //這裡有個小bug，man的會跑到elf去顯示QQ
 
         var names = new string[] { "elf_head", "girl_head", "man_head", "krampus_head" };
-        
-        for(int i = 0; i < 4; i++)
-        {
-            var gs = GameObject.Find(names[i]).transform.Find("goodscore").gameObject;
-            var es = gs.transform.Find("badscore").gameObject;
-            var gsrf = (RectTransform)gs.GetComponent(typeof(RectTransform));
-            var esrf = (RectTransform)es.GetComponent(typeof(RectTransform));
 
-            gsrf.sizeDelta = new Vector2(Persist.goodScores[i] * 5, 70);
-            esrf.sizeDelta = new Vector2(Persist.evilScores[i] * 5, 70);
-        }
 
         int maxTotal = 0, maxTotali = 0;
         for (int i = 0; i < 4; i++)
@@ -71,6 +61,17 @@ public class ShowReslut : MonoBehaviour
         GameObject.Find("self").transform.position = GameObject.Find(names[Persist.GetLobby().playerId]).transform.position;
 
         Debug.Log(Persist.GetLobby().playerId);
+
+        for (int i = 0; i < 4; i++)
+        {
+            var gs = GameObject.Find(names[i]).transform.Find("goodscore").gameObject;
+            var es = gs.transform.Find("badscore").gameObject;
+            var gsrf = (RectTransform)gs.GetComponent(typeof(RectTransform));
+            var esrf = (RectTransform)es.GetComponent(typeof(RectTransform));
+
+            gsrf.sizeDelta = new Vector2(1f * Persist.goodScores[i] / maxTotal * 350, 70);
+            esrf.sizeDelta = new Vector2(1f * Persist.evilScores[i] / maxTotal * 350, 70);
+        }
     }
     public void StartShowGui()
     {
