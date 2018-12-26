@@ -113,6 +113,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &537480724 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114987710372596472, guid: 1dcd6868312d0b6418a85211d3fc130e,
+    type: 2}
+  m_PrefabInternal: {fileID: 747091668}
+  m_Script: {fileID: -113659843, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1001 &747091668
 Prefab:
   m_ObjectHideFlags: 0
@@ -466,6 +472,16 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1dcd6868312d0b6418a85211d3fc130e, type: 2}
   m_IsPrefabAsset: 0
+--- !u!82 &943262015 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 82705619204870402, guid: 1dcd6868312d0b6418a85211d3fc130e,
+    type: 2}
+  m_PrefabInternal: {fileID: 747091668}
+--- !u!1 &1275644152 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1786177479157664, guid: 1dcd6868312d0b6418a85211d3fc130e,
+    type: 2}
+  m_PrefabInternal: {fileID: 747091668}
 --- !u!1 &1815368299
 GameObject:
   m_ObjectHideFlags: 0
@@ -494,9 +510,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundVolume: 0.5
-  sliderBar: {fileID: 0}
-  slider: {fileID: 0}
-  bgm: {fileID: 0}
+  sliderBar: {fileID: 1275644152}
+  slider: {fileID: 537480724}
+  bgm: {fileID: 943262015}
 --- !u!4 &1815368301
 Transform:
   m_ObjectHideFlags: 0

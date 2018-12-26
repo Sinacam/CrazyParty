@@ -151,6 +151,7 @@ MonoBehaviour:
   - {fileID: 1510660806266412, guid: 2b477dee13ae6d3498e199e240a0afec, type: 2}
   - {fileID: 1178065942298156, guid: 101a5961a40a7a2449e149bcde135551, type: 2}
   SetbtnCounts: 30
+  btnCounts: 0
 --- !u!4 &312820604
 Transform:
   m_ObjectHideFlags: 0
@@ -173,7 +174,6 @@ GameObject:
   m_Component:
   - component: {fileID: 756702366}
   - component: {fileID: 756702365}
-  - component: {fileID: 756702367}
   m_Layer: 0
   m_Name: Audio Source
   m_TagString: Untagged
@@ -289,18 +289,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &756702367
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 756702364}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ce373ea8fbaaef4786a10c9e305f91a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bgm: {fileID: 756702365}
 --- !u!1 &1735719488
 GameObject:
   m_ObjectHideFlags: 0
