@@ -22,7 +22,7 @@ public class Persist : NetworkBehaviour
         stopbtnStyle.normal.textColor = Color.blue;
         stopbtnStyle.normal.background = (Texture2D)btnTexture;
         stopbtnStyle.alignment = TextAnchor.MiddleCenter;
-        stopbtnStyle.font = Font.CreateDynamicFontFromOSFont("Arial", 16);
+        stopbtnStyle.font = Font.CreateDynamicFontFromOSFont("Arial", fontSize);
 
 
         //btnContent.image = btnTexture;
@@ -30,14 +30,17 @@ public class Persist : NetworkBehaviour
         createbtnStyle.normal.textColor = Color.blue;
         createbtnStyle.normal.background = (Texture2D)btnTexture;
         createbtnStyle.alignment = TextAnchor.MiddleCenter;
-        createbtnStyle.font = Font.CreateDynamicFontFromOSFont("Arial", 16);
+        createbtnStyle.font = Font.CreateDynamicFontFromOSFont("Arial", fontSize);
 
         //btnContent.image = btnTexture;
         roomnameContent.text = "Room Name:";
         roomnameStyle.normal.textColor = Color.blue;
         roomnameStyle.normal.background = (Texture2D)btnTexture;
         roomnameStyle.alignment = TextAnchor.MiddleCenter;
-        roomnameStyle.font = Font.CreateDynamicFontFromOSFont("Arial", 16);
+        roomnameStyle.font = Font.CreateDynamicFontFromOSFont("Arial", fontSize);
+
+        //roomtextStyle.alignment = TextAnchor.MiddleCenter;
+        roomtextStyle.font = Font.CreateDynamicFontFromOSFont("Arial", fontSize);
 
 
         //btnContent.image = btnTexture;
@@ -45,26 +48,28 @@ public class Persist : NetworkBehaviour
         findMatchStyle.normal.textColor = Color.blue;
         findMatchStyle.normal.background = (Texture2D)btnTexture;
         findMatchStyle.alignment = TextAnchor.MiddleCenter;
-        findMatchStyle.font = Font.CreateDynamicFontFromOSFont("Arial", 16);
+        findMatchStyle.font = Font.CreateDynamicFontFromOSFont("Arial", fontSize);
 
         //btnContent.image = btnTexture;
         matchStyle.normal.textColor = Color.blue;
         matchStyle.normal.background = matchTexture as Texture2D;
         matchStyle.alignment = TextAnchor.MiddleCenter;
-        matchStyle.font = Font.CreateDynamicFontFromOSFont("Arial", 16);
+        matchStyle.font = Font.CreateDynamicFontFromOSFont("Arial", fontSize);
 
         //btnContent.image = btnTexture;
         backMatchContent.text = "Back to Match Menu";
         backMatchStyle.normal.textColor = Color.blue;
         backMatchStyle.normal.background = (Texture2D)btnTexture;
         backMatchStyle.alignment = TextAnchor.MiddleCenter;
-        backMatchStyle.font = Font.CreateDynamicFontFromOSFont("Arial", 16);
+        backMatchStyle.font = Font.CreateDynamicFontFromOSFont("Arial", fontSize);
 
         DontDestroyOnLoad(gameObject);
     }
 
     NetworkManager manager;
     public Texture btnTexture, matchTexture;
+    public int btnLength, btnWidth;
+    public int fontSize;
 
     [SerializeField] public bool showGUI = true;
 
@@ -78,6 +83,8 @@ public class Persist : NetworkBehaviour
 
     GUIStyle roomnameStyle = new GUIStyle();
     GUIContent roomnameContent = new GUIContent();
+
+    GUIStyle roomtextStyle = new GUIStyle();
 
     GUIStyle matchStyle = new GUIStyle();
     GUIContent matchContent = new GUIContent();
@@ -109,8 +116,8 @@ public class Persist : NetworkBehaviour
         int xpos = 10;
         int ypos = 40;
 
-        xpos = (int)btnPosition.x - 100;
-        ypos = (int)btnPosition.y - 200;
+        xpos = (int)btnPosition.x - btnLength/2;
+        ypos = (int)btnPosition.y - btnWidth;
 
         const int spacing = 24;
 
@@ -215,7 +222,7 @@ public class Persist : NetworkBehaviour
         if (NetworkServer.active || manager.IsClientConnected())
         {
 
-            if (GUI.Button(new Rect(xpos, ypos, 200, 40), stopbtnContent, stopbtnStyle))
+            if (GUI.Button(new Rect(xpos, ypos, btnLength, btnWidth), stopbtnContent, stopbtnStyle))
             {
                 Debug.Log("StopMatch");
                 manager.StopHost();
@@ -236,7 +243,7 @@ public class Persist : NetworkBehaviour
                     }*/
                 }
             }
-            ypos += 40;
+            ypos += btnWidth;
         }
 
         if (!NetworkServer.active && !manager.IsClientConnected() && noConnection)
@@ -251,7 +258,7 @@ public class Persist : NetworkBehaviour
 
             if (manager.matchMaker == null)
             {
-                if (GUI.Button(new Rect(xpos, ypos, 200, 20), "Enable Match Maker (M)"))
+                if (GUI.Button(new Rect(xpos, ypos, btnLength, btnWidth), "Enable Match Maker (M)"))
                 {
                     manager.StartMatchMaker();
                 }
@@ -265,7 +272,7 @@ public class Persist : NetworkBehaviour
                     {
 
                         //if (GUI.Button(new Rect(xpos, ypos, 200, 20), "Create Internet Match"))
-                        if (GUI.Button(new Rect(xpos, ypos, 200, 40), btnContent, createbtnStyle))
+                        if (GUI.Button(new Rect(xpos, ypos, btnLength, btnWidth), btnContent, createbtnStyle))
                         {
                             Debug.Log("CreateMatch");
                             manager.matchMaker.CreateMatch(manager.matchName, manager.matchSize, true, "", "", "", 0, 0, manager.OnMatchCreate);
@@ -282,19 +289,19 @@ public class Persist : NetworkBehaviour
                                 SceneManager.LoadScene("Room");
                             }*/
                         }
-                        ypos += 40;
+                        ypos += btnWidth;
 
 
-                        GUI.Label(new Rect(xpos, ypos, 150, 40), roomnameContent, roomnameStyle);
-                        manager.matchName = GUI.TextField(new Rect(xpos + 150, ypos, 100, 40), manager.matchName);
-                        ypos += 40;
+                        GUI.Label(new Rect(xpos, ypos, btnLength - 50, btnWidth), roomnameContent, roomnameStyle);
+                        manager.matchName = GUI.TextField(new Rect(xpos + btnLength, ypos + btnWidth/2 - 20, btnLength, 40), manager.matchName, roomtextStyle);
+                        ypos += btnWidth;
 
-                        if (GUI.Button(new Rect(xpos, ypos, 200, 40), findMatchContent, findMatchStyle))
+                        if (GUI.Button(new Rect(xpos, ypos, btnLength, btnWidth), findMatchContent, findMatchStyle))
                         {
                             Debug.Log("FindMatch");
                             manager.matchMaker.ListMatches(0, 20, "", false, 0, 0, manager.OnMatchList);
                         }
-                        ypos += 40;
+                        ypos += btnWidth;
                     }
                     else
                     {
@@ -304,7 +311,7 @@ public class Persist : NetworkBehaviour
 
                             matchContent.text = "Join Match:" + match.name;
 
-                            if (GUI.Button(new Rect(xpos, ypos, 200, 40), matchContent, matchStyle))
+                            if (GUI.Button(new Rect(xpos, ypos, btnLength, btnWidth), matchContent, matchStyle))
                             {
                                 manager.matchName = match.name;
                                 manager.matchMaker.JoinMatch(match.networkId, "", "", "", 0, 0, manager.OnMatchJoined);
@@ -320,10 +327,10 @@ public class Persist : NetworkBehaviour
                                 }*/
                                 //SceneManager.LoadScene("Room");
                             }
-                            ypos += 40;
+                            ypos += btnWidth;
                         }
 
-                        if (GUI.Button(new Rect(xpos, ypos, 200, 40), backMatchContent, backMatchStyle))
+                        if (GUI.Button(new Rect(xpos, ypos, btnLength, btnWidth), backMatchContent, backMatchStyle))
                         {
                             Debug.Log("BackToMenu");
                             manager.matches = null;
@@ -331,7 +338,7 @@ public class Persist : NetworkBehaviour
                             //SceneManager.SetActiveScene(SceneManager.GetSceneByName("Lobby"));
                             //SceneManager.LoadScene("Lobby");
                         }
-                        ypos += 40;
+                        ypos += btnWidth;
                     }
                 }
                 /*

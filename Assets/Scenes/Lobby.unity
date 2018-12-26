@@ -207,6 +207,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   btnTexture: {fileID: 2800000, guid: 8685f8b540e194d00a3850db336ee581, type: 3}
   matchTexture: {fileID: 2800000, guid: 5c3eed03f0ee74b0892cda3bbe525837, type: 3}
+  btnLength: 600
+  btnWidth: 120
+  fontSize: 50
   showGUI: 1
 --- !u!4 &621226981
 Transform:
