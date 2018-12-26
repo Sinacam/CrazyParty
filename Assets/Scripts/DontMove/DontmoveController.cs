@@ -24,7 +24,8 @@ public class DontmoveController : PlayerBehaviour
         timer += Time.deltaTime;
         if (timer >= 12){
             int finalScore = localGoodScore - localBadScore;
-            Debug.Log(localGoodScore + " " + localBadScore);
+            finalScore = finalScore > 0 ? finalScore : 0;
+            //Debug.Log(localGoodScore + " " + localBadScore);
             LevelDone(finalScore, 0);
         }
 
