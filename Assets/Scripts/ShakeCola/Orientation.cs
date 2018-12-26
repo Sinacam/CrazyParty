@@ -24,7 +24,7 @@ public class Orientation : MonoBehaviour {
         Screen.autorotateToLandscapeLeft = true;
 
         // 設定是否可以 向右倒
-        Screen.autorotateToLandscapeRight = true;
+        Screen.autorotateToLandscapeRight = false;
 
         // 設定是否可以 正向
         Screen.autorotateToPortrait = false;

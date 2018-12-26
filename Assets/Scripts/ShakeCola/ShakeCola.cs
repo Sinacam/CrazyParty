@@ -74,10 +74,14 @@ public class ShakeCola : PlayerBehaviour
     [Command] //執行shake cola動作（要從client傳到server)
     public void CmdShakeCola()
     {
-        GetComponent<AudioSource>().Play(); //播放音效
-        countShake += 1;
-        print("countShake:" + countShake);
-        groupScore[group] += countShake;
-        colaColor.transform.Translate(yposition + new Vector2(0, 20));
+        if(playerFinish == false)
+        {
+            GetComponent<AudioSource>().Play(); //播放音效
+            countShake += 1;
+            print("countShake:" + countShake);
+            groupScore[group] += countShake;
+            colaColor.transform.Translate(yposition + new Vector2(0, 20));
+
+        }
     }
 }
