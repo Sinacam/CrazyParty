@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class BtnTouch : MonoBehaviour {
+public class BtnTouch : MonoBehaviour{
 
 	// Use this for initialization
 	void Start () {
@@ -13,9 +15,12 @@ public class BtnTouch : MonoBehaviour {
 	void Update () {
 		
 	}
-    public void btnClick()
-    {
+   
+
+   
+ public void Onclick() { 
         if (DontMoveCtrl.isRedBgm){
+            Debug.Log("已被破壞!");
             DontMoveCtrl.touchCountsInRed++;
             Destroy(transform.gameObject);
         }
@@ -24,6 +29,6 @@ public class BtnTouch : MonoBehaviour {
             DontMoveCtrl.touchCountsInYellow++;
             Destroy(transform.gameObject);
         }
-        
+
     }
 }
