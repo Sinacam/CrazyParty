@@ -42,7 +42,7 @@ public class BallController : PlayerBehaviour
 
         if(elapsed > 10)
         {
-            LevelDone(1, 0);
+            LevelDone(10, 0);
         }
     }
 }

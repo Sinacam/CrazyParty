@@ -34,24 +34,24 @@ public class PullBehaviour : PlayerBehaviour
 
             if (pos < 0 && dir < 0)
             {
-                print("left team win!");
-                LevelDone(1, 0);
-                print(goodScore);
+                //print("left team win!");
+                LevelDone(10, 0);
+                //print(goodScore);
             }
             else if (pos > 0 && dir >0)
             {
-                print("right team win!");
+                //print("right team win!");
                 //right member ++ goodscore
                 //evilScore = 1;
-                LevelDone(1, 0);
-                print(goodScore);
+                LevelDone(10, 0);
+                //print(goodScore);
             }
             else
             {
-                print("player lose");
+                //print("player lose");
                 LevelDone(0,0);
-                print(goodScore);
-                print(evilScore);
+                //print(goodScore);
+                //print(evilScore);
             }
 
         }

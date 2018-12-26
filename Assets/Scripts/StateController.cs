@@ -22,12 +22,12 @@ public class StateController : MonoBehaviour {
     {
         if (bow.transform.position.x < 0)
         {
-            print("left team win!");
+            //print("left team win!");
             //left member ++ goodscore
         }
         else if (bow.transform.position.x > 0)
         {
-            print("right team win!");
+            //print("right team win!");
             //right member ++ goodscore
         }
 

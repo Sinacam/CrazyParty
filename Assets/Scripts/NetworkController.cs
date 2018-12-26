@@ -83,6 +83,12 @@ public class NetworkController : NetworkManager
 
         base.OnServerSceneChanged(s);
     }
+    public override void OnStopServer()
+    {
+        Debug.Log("stop server");
+        NetworkServer.Reset();
+        base.OnStopServer();
+    }
 
     public override void OnServerAddPlayer(NetworkConnection conn, short id)
     {

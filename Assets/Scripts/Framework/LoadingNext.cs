@@ -8,6 +8,7 @@ public class LoadingNext : NetworkBehaviour
 {
     void Start()
     {
+        Persist.instance.showGUI = false;
         StartCoroutine(NextLevelIn(1));
     }
 
