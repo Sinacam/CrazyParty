@@ -292,8 +292,12 @@ public class Persist : NetworkBehaviour
                         ypos += btnWidth;
 
 
+                        roomtextStyle = GUI.skin.textArea;
+                        roomtextStyle.alignment = TextAnchor.MiddleCenter;
+                        roomtextStyle.font = Font.CreateDynamicFontFromOSFont("Arial", fontSize-10);
+
                         GUI.Label(new Rect(xpos, ypos, btnLength - 50, btnWidth), roomnameContent, roomnameStyle);
-                        manager.matchName = GUI.TextField(new Rect(xpos + btnLength, ypos + btnWidth/2 - 20, btnLength, 40), manager.matchName, roomtextStyle);
+                        manager.matchName = GUI.TextField(new Rect(xpos + btnLength, ypos + (int)(btnWidth * 0.15), btnLength/2, (int)(btnWidth * 0.7)), manager.matchName, roomtextStyle);
                         ypos += btnWidth;
 
                         if (GUI.Button(new Rect(xpos, ypos, btnLength, btnWidth), findMatchContent, findMatchStyle))
