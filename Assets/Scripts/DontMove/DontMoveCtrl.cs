@@ -17,7 +17,7 @@ public class DontMoveCtrl : MonoBehaviour
     [SerializeField] int SetbtnCounts = 30;//設定按鈕出現數量限制
     [HideInInspector]public static int  touchCountsInYellow = 0;//黃色BGM時按的次數(加分用)
     [HideInInspector] public static int  touchCountsInRed = 0;//紅色BGM時按的次數(扣分用)
-    int btnCounts = 0;//紀錄畫面中出現的按鈕
+    public int btnCounts;//紀錄畫面中出現的按鈕
     [HideInInspector] public static bool isRedBgm;
     void Start()
     {
@@ -27,6 +27,7 @@ public class DontMoveCtrl : MonoBehaviour
         backGround.sprite = yellowBgm;
         isRedBgm = false;
 
+        StartCoroutine(SpawnButton());
     }
 
     void Update()
@@ -34,21 +35,7 @@ public class DontMoveCtrl : MonoBehaviour
         //if (!isLocalPlayer)
         // return;
         duration += Time.deltaTime;
-        if (duration > 2)
-        {
-            if (btnCounts < SetbtnCounts)
-            {
 
-                //Debug.Log("已進入迴圈");
-                float btnPositionX = Random.Range(-9.0f, 9.0f);//隨機產生點
-                float btnPositionY = Random.Range(-5.0f, 5.0f);//隨機產生點
-                float movePostionX = Random.Range(-9.0f, 9.0f) * 10;//按鈕移動方向
-                float movePositionY = Random.Range(-5.0f, 5.0f) * 10;//按鈕移動方向
-                GameObject btn = Instantiate(btns[Random.Range(0, 5)], new Vector3(btnPositionX, btnPositionY), Quaternion.identity);
-                btn.GetComponent<Rigidbody2D>().AddForce(new Vector2(movePostionX, movePositionY));
-                btnCounts++;
-            }
-        }
         if (redStart < duration)
         {
 
@@ -62,6 +49,26 @@ public class DontMoveCtrl : MonoBehaviour
             isRedBgm = false;
         }
     }
+
+    IEnumerator SpawnButton()
+    {
+        yield return new WaitForSeconds(2);
+
+        while (btnCounts < SetbtnCounts)
+        {
+            //Debug.Log("已進入迴圈");
+            float btnPositionX = Random.Range(-9.0f, 9.0f);//隨機產生點
+            float btnPositionY = Random.Range(-5.0f, 5.0f);//隨機產生點
+            float movePostionX = Random.Range(-9.0f, 9.0f) * 10;//按鈕移動方向
+            float movePositionY = Random.Range(-5.0f, 5.0f) * 10;//按鈕移動方向
+            GameObject btn = Instantiate(btns[Random.Range(0, 5)], new Vector3(btnPositionX, btnPositionY), Quaternion.identity);
+            btn.GetComponent<Rigidbody2D>().AddForce(new Vector2(movePostionX, movePositionY));
+            btnCounts++;
+
+            yield return new WaitForSeconds(0.5f * btnCounts / SetbtnCounts);
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //Debug.Log("物件已到邊界");

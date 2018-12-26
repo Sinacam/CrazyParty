@@ -35,20 +35,19 @@ public class DontmoveController : PlayerBehaviour
             //Debug.Log(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
 
-            if (hit.collider != null)
+            if (hit.collider != null && hit.collider.gameObject.tag == "dontmovebutton")
             {
-                //Debug.Log(hit.collider.gameObject.tag == "dontmovebutton");
-                if (hit.collider.gameObject.tag == "dontmovebutton")
-                {
-                    if (DontMoveCtrl.isRedBgm){
-                        localBadScore++;
-                    }
-                    else {
-                        localGoodScore++;
-                    }
-                    //GetComponent<AudioSource>().Play();
-                    Destroy(hit.collider.gameObject);
+                if (DontMoveCtrl.isRedBgm){
+                    localBadScore++;
                 }
+                else {
+                    localGoodScore++;
+                }
+                //GetComponent<AudioSource>().Play();
+                Destroy(hit.collider.gameObject);
+
+                var ctrl = (DontMoveCtrl)GameObject.Find("DontMoveCtrl").GetComponent(typeof(DontMoveCtrl));
+                ctrl.btnCounts--;
             }
         }
 
