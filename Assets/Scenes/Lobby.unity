@@ -346,6 +346,8 @@ MonoBehaviour:
     active: 1
   - name: LevelTemplate
     active: 0
+  - name: DontMove
+    active: 1
 --- !u!1 &744716550
 GameObject:
   m_ObjectHideFlags: 0
