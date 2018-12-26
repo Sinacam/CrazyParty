@@ -363,7 +363,7 @@ Prefab:
     - target: {fileID: 224327165078659468, guid: 1dcd6868312d0b6418a85211d3fc130e,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: -36
+      value: -36.00006
       objectReference: {fileID: 0}
     - target: {fileID: 224327165078659468, guid: 1dcd6868312d0b6418a85211d3fc130e,
         type: 2}
@@ -438,22 +438,26 @@ Prefab:
     - target: {fileID: 95434600706491036, guid: 1dcd6868312d0b6418a85211d3fc130e,
         type: 2}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1218542191262852, guid: 1dcd6868312d0b6418a85211d3fc130e, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114267851072835870, guid: 1dcd6868312d0b6418a85211d3fc130e,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4b9790b33428244509282c637b38ffff,
+        type: 3}
+    - target: {fileID: 114267851072835870, guid: 1dcd6868312d0b6418a85211d3fc130e,
+        type: 2}
+      propertyPath: m_Type
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1dcd6868312d0b6418a85211d3fc130e, type: 2}
   m_IsPrefabAsset: 0
---- !u!1 &1462091647 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1051381964286850, guid: 1dcd6868312d0b6418a85211d3fc130e,
-    type: 2}
-  m_PrefabInternal: {fileID: 747091668}
---- !u!114 &1462091649 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114987710372596472, guid: 1dcd6868312d0b6418a85211d3fc130e,
-    type: 2}
-  m_PrefabInternal: {fileID: 747091668}
-  m_Script: {fileID: -113659843, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &1815368299
 GameObject:
   m_ObjectHideFlags: 0
@@ -482,9 +486,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundVolume: 0.5
-  sliderBar: {fileID: 1462091647}
-  slider: {fileID: 1462091649}
-  bgm: {fileID: 1942698477}
+  sliderBar: {fileID: 0}
+  slider: {fileID: 0}
+  bgm: {fileID: 0}
 --- !u!4 &1815368301
 Transform:
   m_ObjectHideFlags: 0
@@ -498,11 +502,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &1942698477 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 82705619204870402, guid: 1dcd6868312d0b6418a85211d3fc130e,
-    type: 2}
-  m_PrefabInternal: {fileID: 747091668}
 --- !u!1 &2000524236
 GameObject:
   m_ObjectHideFlags: 0

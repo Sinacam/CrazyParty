@@ -9,10 +9,10 @@ public class WindController : PlayerBehaviour
     GameObject ball;
     float elapsed;
 
-    public float GetAzimuth()
+    public static float GetAzimuth(Vector3 v)
     {
-        var deg = Vector3.Angle(Vector3.right, transform.position);
-        if (transform.position.y < 0)
+        var deg = Vector3.Angle(Vector3.right, v);
+        if (v.y < 0)
             return 360 - deg;
         else
             return deg;
@@ -21,6 +21,11 @@ public class WindController : PlayerBehaviour
     void AddAzimuth(float deg)
     {
         CmdAddAzimuth(deg);
+    }
+
+    void SetAzimuth(float deg)
+    {
+        CmdAddAzimuth(deg - GetAzimuth(transform.position));
     }
 
     [Command]
@@ -34,9 +39,13 @@ public class WindController : PlayerBehaviour
         if (!isLocalPlayer)
             return;
 
+#if UNITY_STANDALONE
         var x = Input.GetAxis("Horizontal");
         var y = Input.GetAxis("Vertical");
-        var a = GetAzimuth();
+
+        
+
+        var a = GetAzimuth(transform.position);
         float da = 0;
 
         // Cutoff to avoid ambiguoous directions.
@@ -52,18 +61,26 @@ public class WindController : PlayerBehaviour
 
         da = Mathf.Clamp(da, -1f, 1f) * Time.deltaTime * sensitivity;
 
-        Debug.Log("a = " + GetAzimuth() + ", da = " + da);
+        Debug.Log("a = " + GetAzimuth(transform.position) + ", da = " + da);
 
         AddAzimuth(da);
+
+#else
+        if (Input.touchCount > 0)
+        {
+            var v2 = Input.GetTouch(0).position;
+            SetAzimuth(GetAzimuth(new Vector3( v2.x, v2.y, 0 )));
+        }
+#endif
 
         elapsed += Time.deltaTime;
 
         if (GameObject.FindWithTag("balanceBall").transform.position.sqrMagnitude > 16)
         {
-            LevelDone(10, 0);
+            LevelDone(0, 10);
         }
 
-        if(elapsed > 10)
+        if (elapsed > 10)
         {
             LevelDone(0, 0);
         }
