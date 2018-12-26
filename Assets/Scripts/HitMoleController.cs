@@ -21,12 +21,12 @@ public class HitMoleController : PlayerBehaviour
         int i;
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log(Input.mousePosition);
+            //Debug.Log(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
 
             if (hit.collider != null)
             {
-                Debug.Log(hit.collider.gameObject.name == "Mole(Clone)");
+                //Debug.Log(hit.collider.gameObject.name == "Mole(Clone)");
                 if (hit.collider.gameObject.name == "Mole(Clone)")
                 {
                     GetComponent<AudioSource>().Play();
@@ -45,7 +45,7 @@ public class HitMoleController : PlayerBehaviour
 
                 if (hit.collider != null)
                 {
-                    Debug.Log(hit.collider.gameObject.name == "Mole(Clone)");
+                    //Debug.Log(hit.collider.gameObject.name == "Mole(Clone)");
                     if (hit.collider.gameObject.name == "Mole(Clone)")
                     {
                         GetComponent<AudioSource>().Play();
@@ -59,13 +59,13 @@ public class HitMoleController : PlayerBehaviour
 
         timer += Time.deltaTime;
 
-        if (timer > 10)
+        if (timer > 12)
         {
             LevelDone(localGoodScore, localEvilScore);
 
             for (i = 0; i < 4; i++)
             {
-                Debug.Log(Persist.goodScores[i] + " " + Persist.evilScores[i]);
+                //Debug.Log(Persist.goodScores[i] + " " + Persist.evilScores[i]);
             }
         }
     }

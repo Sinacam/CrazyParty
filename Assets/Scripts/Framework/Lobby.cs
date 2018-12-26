@@ -16,11 +16,12 @@ public class Lobby : NetworkBehaviour
 
     void Update()
     {
+        /*
         if (Input.GetKeyDown(KeyCode.Space))
-            GotoLoadNext();
+            GotoLoadNext();*/
     }
 
-    void GotoLoadNext()
+    public void GotoLoadNext()
     {
         if (!isServer)
             return;
@@ -34,5 +35,6 @@ public class Lobby : NetworkBehaviour
         }
 
         Persist.net.ServerChangeScene("LoadingNext");
+
     }
 }

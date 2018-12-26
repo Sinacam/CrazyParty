@@ -49,12 +49,12 @@ public class ShakeCola : PlayerBehaviour
             //判斷哪個group贏了
             if((groupScore[0] > groupScore[1]) && (group == 0))
             {
-                LevelDone(1, 0);
+                LevelDone(10, 0);
             }
             //Debug.Log("leveldone");
             else if((groupScore[0] < groupScore[1]) && (group == 1))
             {
-                LevelDone(1, 0);
+                LevelDone(10, 0);
             }
             else
             {

@@ -72,4 +72,8 @@ public class ShowReslut : MonoBehaviour
 
         Debug.Log(Persist.GetLobby().playerId);
     }
+    public void StartShowGui()
+    {
+        Persist.instance.StartShowGui();
+    }
 }

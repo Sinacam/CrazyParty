@@ -60,7 +60,7 @@ public class WindController : PlayerBehaviour
 
         if (GameObject.FindWithTag("balanceBall").transform.position.sqrMagnitude > 16)
         {
-            LevelDone(0, 1);
+            LevelDone(10, 0);
         }
 
         if(elapsed > 10)

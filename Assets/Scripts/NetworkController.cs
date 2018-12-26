@@ -14,11 +14,12 @@ public class NetworkController : NetworkManager
 
     object countLock = new object();
     int roleCount = 0;
-    public int clientCount
+    public int clientCount;
+    /*
     {
         get;
         private set;
-    }
+    }*/
 
     int levelDoneCount = 0;
 
@@ -81,6 +82,12 @@ public class NetworkController : NetworkManager
         }
 
         base.OnServerSceneChanged(s);
+    }
+    public override void OnStopServer()
+    {
+        Debug.Log("stop server");
+        NetworkServer.Reset();
+        base.OnStopServer();
     }
 
     public override void OnServerAddPlayer(NetworkConnection conn, short id)
